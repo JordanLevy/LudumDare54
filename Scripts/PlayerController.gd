@@ -33,7 +33,7 @@ var is_dead = false
 func _ready():
 	sprite = get_node("Sprite")
 	death_timer = get_node("DeathTimer")
-	ingredients = [20, 20, 20, 10]
+	ingredients = [15, 15, 15, 5]
 	monster_rewards = [20, 15, 10, 0]
 	projectile_speed = [0, 150, 150, 150]
 	GlobalManager.monster_killed.connect(on_monster_killed)
@@ -91,7 +91,6 @@ func pay_ingredients(ingredient: GlobalManager.IngredientType, cost: int):
 		emit_signal("ingredients_changed", ingredients)
 		GlobalManager.loss_method = GlobalManager.LossMethod.UNDERFILL
 		GlobalManager.loss_ingredient = ingredient
-		print("pay")
 		death_timer.start()
 		is_dead = true
 		return
@@ -112,7 +111,6 @@ func gain_ingredients(ingredient: GlobalManager.IngredientType, amount: int):
 		GlobalManager.loss_method = GlobalManager.LossMethod.OVERFILL
 		GlobalManager.loss_ingredient = ingredient
 		death_timer.start()
-		print("gain")
 		is_dead = true
 		return
 	ingredients[ingredient] += amount
@@ -129,7 +127,6 @@ func shoot(ingredient: GlobalManager.IngredientType):
 	instance.velocity = direction * projectile_speed[ingredient]
 
 func take_damage(ingredient: GlobalManager.IngredientType, damage: int):
-	print(ingredient)
 	pay_ingredients(ingredient, damage)
 	
 
