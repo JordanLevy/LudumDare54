@@ -18,6 +18,7 @@ const friction = 1200
 var input = Vector2.ZERO
 var fire_primary = false
 var fire_secondary = false
+var mouse_position = Vector2.ZERO
 
 signal ingredients_changed(ingredients : Array[int])
 
@@ -37,6 +38,7 @@ func _physics_process(delta):
 func get_input():
 	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input.y = (Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up"));
+	mouse_position = get_global_mouse_position()
 	if input.length() > 0:
 		input = input.normalized()
 	else:
@@ -82,8 +84,7 @@ func pay_ingredients(ingredient: GlobalManager.IngredientTypes, cost: int):
 	return true
 		
 func shoot(ingredient: GlobalManager.IngredientTypes):
-	var target = get_global_mouse_position()
-	var direction = (target - global_position).normalized()
+	var direction = (mouse_position - global_position).normalized()
 
 	var instance = projectile_prefabs[ingredient].instantiate()
 	get_parent().add_child(instance)

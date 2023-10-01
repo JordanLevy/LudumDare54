@@ -131,5 +131,3 @@ position = Vector2(44.72, -85.075)
 collision_layer = 1
 
 [node name="Player" parent="." instance=ExtResource("16_17jb1")]
-
-[connection signal="body_entered" from="TileMap/NachoSwitch" to="TileMap/NachoSwitch" method="_on_body_entered" flags=18]

@@ -1,26 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://m25gb5gb1w5f"]
+[gd_scene load_steps=7 format=3 uid="uid://m25gb5gb1w5f"]
 
 [ext_resource type="Script" path="res://Scripts/CreamProjectile.gd" id="1_4syhn"]
 [ext_resource type="Texture2D" uid="uid://c1gfiel2742p" path="res://Assets/Projectiles/CreamProjectile.png" id="2_41n8r"]
 
-[sub_resource type="Gradient" id="Gradient_3d6kt"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.216667, 0.441667, 0.608333, 0.8125, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_2gg4n"]
-gradient = SubResource("Gradient_3d6kt")
-
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_drf3c"]
-emission_shape = 1
-emission_sphere_radius = 10.0
 particle_flag_disable_z = true
 direction = Vector3(0, 0, 0)
-spread = 180.0
+spread = 30.61
 flatness = 1.0
 gravity = Vector3(0, 0, 0)
-initial_velocity_min = 100.0
-initial_velocity_max = 100.0
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 damping_min = 29.253
@@ -28,12 +18,11 @@ damping_max = 51.701
 angle_max = 360.0
 scale_min = 0.1
 scale_max = 0.5
-color_ramp = SubResource("GradientTexture1D_2gg4n")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qoxfa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mhh8x"]
-radius = 41.0122
+radius = 43.0465
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oqbd1"]
 radius = 8.94427
@@ -44,16 +33,18 @@ collision_mask = 0
 script = ExtResource("1_4syhn")
 
 [node name="Particle" type="GPUParticles2D" parent="."]
-amount = 200
+amount = 50
 process_material = SubResource("ParticleProcessMaterial_drf3c")
 texture = ExtResource("2_41n8r")
-lifetime = 0.5
+lifetime = 0.2
+explosiveness = 0.75
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 4.17233e-07)
 sprite_frames = SubResource("SpriteFrames_qoxfa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(53, 0)
 shape = SubResource("CircleShape2D_mhh8x")
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -62,3 +53,9 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_oqbd1")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
