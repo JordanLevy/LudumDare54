@@ -37,8 +37,8 @@ animations = [{
 radius = 8.0
 
 [node name="GuacProjectile" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 0
+collision_layer = 32
+collision_mask = 22
 script = ExtResource("1_1x75n")
 
 [node name="Particle" type="GPUParticles2D" parent="."]

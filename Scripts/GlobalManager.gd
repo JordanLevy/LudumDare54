@@ -1,6 +1,6 @@
 extends Node2D
 
-enum IngredientTypes {
+enum IngredientType {
 	CREAM = 0,
 	SPICE = 1,
 	MEAT = 2,
@@ -16,13 +16,22 @@ enum GameState {
 	SETTINGS = 4
 }
 
+enum LossMethod {
+	NONE = 0,
+	UNDERFILL = 1,
+	OVERFILL = 2
+}
+
 signal nacho_activated
 signal game_state_changed
+signal monster_killed
 
 
 var is_menu_enabled = true
 var nacho_count : Array[int] = [0, 0, 0, 0, 0]
 var game_state : GameState = GameState.PLAY
+var loss_method: LossMethod = LossMethod.NONE
+var loss_ingredient: IngredientType = IngredientType.PLAIN
 
 func set_game_state(state: GameState):
 	if state == game_state:
@@ -31,13 +40,28 @@ func set_game_state(state: GameState):
 	if state == GameState.MENU:
 		get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 	elif state == GameState.PLAY:
-		#nacho_count = [0, 0, 0, 0, 0]
+		loss_method = LossMethod.NONE
+		loss_ingredient = IngredientType.PLAIN
 		get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 	elif state == GameState.WIN:
+		nacho_count = [0, 0, 0, 0, 0]
 		get_tree().change_scene_to_file("res://Scenes/WinScreen.tscn")
 	elif state == GameState.LOSE:
+		nacho_count = [0, 0, 0, 0, 0]
 		get_tree().change_scene_to_file("res://Scenes/LoseScreen.tscn")
 	elif state == GameState.SETTINGS:
 		get_tree().change_scene_to_file("res://Scenes/SettingsMenu.tscn")
 	game_state_changed.emit(game_state)
+	
+func get_ingredient_name(ingredient: IngredientType):
+	if ingredient == IngredientType.PLAIN:
+		return "Plain"
+	if ingredient == IngredientType.CREAM:
+		return "Sour Cream"
+	if ingredient == IngredientType.SPICE:
+		return "Spicy Salsa"
+	if ingredient == IngredientType.MEAT:
+		return "Meat"
+	if ingredient == IngredientType.GUAC:
+		return "Guacamole"
 	

@@ -6,7 +6,7 @@ var area: Area2D
 var player: Player
 
 func _ready():
-	ingredient_type = GlobalManager.IngredientTypes.CREAM
+	ingredient_type = GlobalManager.IngredientType.CREAM
 	player = get_tree().get_root().get_node("Node2D/Player")
 	position = player.position
 	rotation = atan2(player.mouse_position.y - position.y, player.mouse_position.x - position.x)

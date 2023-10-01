@@ -9,5 +9,5 @@ func center_on_player():
 	if player:
 		position = lerp(global_position, player.global_position, 0.2);
 
-func _process(delta):
+func _process(_delta):
 	center_on_player()

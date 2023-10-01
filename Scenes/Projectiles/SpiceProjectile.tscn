@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bscrql2n0h37e"]
+[gd_scene load_steps=8 format=3 uid="uid://bscrql2n0h37e"]
 
 [ext_resource type="Script" path="res://Scripts/SpiceProjectile.gd" id="1_5uj3p"]
 [ext_resource type="Texture2D" uid="uid://vw65wr5ytbaf" path="res://Assets/Projectiles/SpiceProjectile.png" id="2_b5yx5"]
@@ -36,12 +36,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_mhh8x"]
 radius = 8.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oqbd1"]
-radius = 9.0
-
 [node name="SpiceProjectile" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 0
+collision_layer = 32
+collision_mask = 22
 script = ExtResource("1_5uj3p")
 
 [node name="Particle" type="GPUParticles2D" parent="."]
@@ -56,10 +53,3 @@ sprite_frames = SubResource("SpriteFrames_qoxfa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mhh8x")
-
-[node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("CircleShape2D_oqbd1")

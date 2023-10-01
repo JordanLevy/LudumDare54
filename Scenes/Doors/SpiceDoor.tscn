@@ -94,7 +94,8 @@ size = Vector2(33.8109, 10.2571)
 [node name="SpiceDoor" type="CharacterBody2D"]
 y_sort_enabled = true
 position = Vector2(1, -14)
-collision_layer = 3
+collision_layer = 16
+collision_mask = 16
 script = ExtResource("1_54c3j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

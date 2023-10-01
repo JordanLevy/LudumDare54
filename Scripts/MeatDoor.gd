@@ -3,5 +3,5 @@ extends Door
 class_name MeatDoor
 
 func _ready():
-	id = GlobalManager.IngredientTypes.MEAT
+	id = GlobalManager.IngredientType.MEAT
 	super._ready()

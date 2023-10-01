@@ -8,10 +8,10 @@ var nacho: AnimatedSprite2D
 
 func _ready():
 	nacho = get_node("Nacho")
-	nacho.frame = GlobalManager.IngredientTypes.PLAIN
+	nacho.frame = GlobalManager.IngredientType.PLAIN
 	GlobalManager.nacho_count[nacho.frame] += 1
 
-func change_topping(ingredient: GlobalManager.IngredientTypes):
+func change_topping(ingredient: GlobalManager.IngredientType):
 	# not changing
 	if  nacho.frame == ingredient:
 		return

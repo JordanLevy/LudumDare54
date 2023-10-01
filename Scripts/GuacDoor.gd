@@ -3,5 +3,5 @@ extends Door
 class_name GuacDoor
 
 func _ready():
-	id = GlobalManager.IngredientTypes.GUAC
+	id = GlobalManager.IngredientType.GUAC
 	super._ready()
