@@ -37,8 +37,6 @@ func _on_hurtbox_body_entered(body):
 func _physics_process(delta):
 	time_since_last_flip += delta
 	(await get_tree().process_frame)
-	if (global_position - player.global_position).length() <= 10:
-		return
 	var direction = Vector3()
 	nav.target_position = player.global_position
 	direction = nav.get_next_path_position() - global_position

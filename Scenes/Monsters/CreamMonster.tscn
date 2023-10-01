@@ -26,35 +26,35 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_biwke"]
-radius = 10.0499
+radius = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bijnw"]
 radius = 24.0
 
 [node name="CreamMonster" type="CharacterBody2D"]
 y_sort_enabled = true
-collision_layer = 3
-collision_mask = 55
+collision_layer = 128
+collision_mask = 0
 script = ExtResource("1_66gbt")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, 36)
+position = Vector2(0, 4)
 sprite_frames = SubResource("SpriteFrames_bo6sb")
 autoplay = "default"
 frame = 1
 offset = Vector2(0, -36)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 12)
+position = Vector2(0, -16)
 shape = SubResource("CircleShape2D_biwke")
 
 [node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(2, 14)
+position = Vector2(0, -15)
 shape = SubResource("CircleShape2D_bijnw")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

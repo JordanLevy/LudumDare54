@@ -77,6 +77,10 @@ fire_secondary={
 2d_physics/layer_5="Doors"
 2d_physics/layer_6="Abilities"
 2d_physics/layer_7="Nachos"
+2d_physics/layer_8="CreamMonster"
+2d_physics/layer_9="SpiceMonster"
+2d_physics/layer_10="MeatMonster"
+2d_physics/layer_11="GuacMonster"
 
 [rendering]
 

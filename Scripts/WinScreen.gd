@@ -3,7 +3,7 @@ extends CenterContainer
 var label: Label
 
 var underfill_phrases = ["You ran out of {i}!", "What kind of burrito doesn't have {i}?!"]
-var overfill_phrases = ["Extra {i} was too much!", "I'm gonna have to eat this with a fork! Too much {i}", "{i} is leaking everywhere!"]
+var overfill_phrases = ["That extra scoop of {i} was too much!", "I'm gonna have to eat this with a fork! Too much {i}", "{i} is leaking everywhere!"]
 
 func _ready():
 	label = get_node("VBoxContainer/Label")

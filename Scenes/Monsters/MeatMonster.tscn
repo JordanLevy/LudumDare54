@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dlhqnm2bdiyj0"]
 
-[ext_resource type="Script" path="res://Scripts/CreamMonster.gd" id="1_yakux"]
+[ext_resource type="Script" path="res://Scripts/MeatMonster.gd" id="1_7xwp5"]
 [ext_resource type="Texture2D" uid="uid://dcktvccv2lijp" path="res://Assets/Monsters/MeatMonster.png" id="2_q2mcm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pdctu"]
@@ -26,35 +26,35 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_biwke"]
-radius = 10.0499
+radius = 14.0357
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bijnw"]
-radius = 24.0
+radius = 20.025
 
 [node name="MeatMonster" type="CharacterBody2D"]
 y_sort_enabled = true
-collision_layer = 3
-collision_mask = 55
-script = ExtResource("1_yakux")
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("1_7xwp5")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, 36)
+position = Vector2(0, 10)
 sprite_frames = SubResource("SpriteFrames_bo6sb")
 autoplay = "default"
-frame_progress = 0.320012
+frame_progress = 0.596552
 offset = Vector2(0, -36)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 12)
+position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_biwke")
 
 [node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(2, 14)
+position = Vector2(0, -14)
 shape = SubResource("CircleShape2D_bijnw")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
