@@ -29,7 +29,7 @@ var projectile_cost: int = 0
 func _ready():
 	sprite = get_node("Sprite")
 	ingredients = [30, 20, 30, 10]
-	projectile_speed = [0.1, 150, 150, 150]
+	projectile_speed = [0, 150, 150, 150]
 	emit_signal("ingredients_changed", ingredients)
 
 func _physics_process(delta):

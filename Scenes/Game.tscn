@@ -1,32 +1,33 @@
-[gd_scene load_steps=20 format=3 uid="uid://60g0forxgg2m"]
+[gd_scene load_steps=21 format=3 uid="uid://60g0forxgg2m"]
 
-[ext_resource type="Script" path="res://Scripts/IngredientsBar.gd" id="1_07yky"]
-[ext_resource type="Texture2D" uid="uid://ymkmnhqc73hy" path="res://Assets/IngredientsBar/Under.png" id="2_wn54c"]
-[ext_resource type="Texture2D" uid="uid://clpaj0sm6gfli" path="res://Assets/IngredientsBar/Cream.png" id="3_3h2j3"]
-[ext_resource type="Texture2D" uid="uid://d4gj0drigpvig" path="res://Assets/IngredientsBar/Spice.png" id="4_38jx6"]
-[ext_resource type="Texture2D" uid="uid://b3wa33333ttyo" path="res://Assets/IngredientsBar/Meat.png" id="5_hiay6"]
-[ext_resource type="Texture2D" uid="uid://b10ly5ir2vidv" path="res://Assets/IngredientsBar/Guac.png" id="6_hc0d3"]
-[ext_resource type="Texture2D" uid="uid://bn2u6l6jtfrg3" path="res://Assets/IngredientsBar/Over.png" id="7_0k35c"]
-[ext_resource type="PackedScene" uid="uid://dirm853ccicvy" path="res://Scenes/Doors/CreamDoor.tscn" id="8_0uwx8"]
-[ext_resource type="Texture2D" uid="uid://bnni7u7ut862f" path="res://Assets/Tiles.png" id="8_h03ci"]
-[ext_resource type="Script" path="res://Scripts/CameraController.gd" id="9_104ku"]
-[ext_resource type="PackedScene" uid="uid://bn4rqxygnm7gc" path="res://Scenes/CreamMonster.tscn" id="10_hpyon"]
-[ext_resource type="PackedScene" uid="uid://df6olwqthuxfu" path="res://Scenes/Doors/SpiceDoor.tscn" id="10_imu5l"]
-[ext_resource type="PackedScene" uid="uid://c1wwg6ncf6rcs" path="res://Scenes/Doors/MeatDoor.tscn" id="11_s2d35"]
-[ext_resource type="PackedScene" uid="uid://mgw1idm7mnr8" path="res://Scenes/Doors/GuacDoor.tscn" id="12_pdv4q"]
-[ext_resource type="PackedScene" uid="uid://c55mpc0awlaxg" path="res://Scenes/NachoSwitch.tscn" id="14_jvlks"]
-[ext_resource type="PackedScene" uid="uid://bvibyd42fxp4l" path="res://Scenes/Player.tscn" id="16_17jb1"]
+[ext_resource type="Script" path="res://Scripts/IngredientsBar.gd" id="1_upqh5"]
+[ext_resource type="Texture2D" uid="uid://ymkmnhqc73hy" path="res://Assets/IngredientsBar/Under.png" id="2_7sjuu"]
+[ext_resource type="Texture2D" uid="uid://clpaj0sm6gfli" path="res://Assets/IngredientsBar/Cream.png" id="3_lat7g"]
+[ext_resource type="Texture2D" uid="uid://d4gj0drigpvig" path="res://Assets/IngredientsBar/Spice.png" id="4_37e6d"]
+[ext_resource type="Texture2D" uid="uid://b3wa33333ttyo" path="res://Assets/IngredientsBar/Meat.png" id="5_2a7b6"]
+[ext_resource type="Texture2D" uid="uid://b10ly5ir2vidv" path="res://Assets/IngredientsBar/Guac.png" id="6_hbgvo"]
+[ext_resource type="Texture2D" uid="uid://bn2u6l6jtfrg3" path="res://Assets/IngredientsBar/Over.png" id="7_kvmkn"]
+[ext_resource type="PackedScene" uid="uid://c55mpc0awlaxg" path="res://Scenes/NachoSwitch.tscn" id="8_b6ci4"]
+[ext_resource type="PackedScene" uid="uid://dirm853ccicvy" path="res://Scenes/Doors/CreamDoor.tscn" id="9_2yccx"]
+[ext_resource type="PackedScene" uid="uid://df6olwqthuxfu" path="res://Scenes/Doors/SpiceDoor.tscn" id="10_vrniv"]
+[ext_resource type="PackedScene" uid="uid://c1wwg6ncf6rcs" path="res://Scenes/Doors/MeatDoor.tscn" id="11_5k5x0"]
+[ext_resource type="PackedScene" uid="uid://mgw1idm7mnr8" path="res://Scenes/Doors/GuacDoor.tscn" id="12_bqt1k"]
+[ext_resource type="Texture2D" uid="uid://bnni7u7ut862f" path="res://Assets/Tiles.png" id="13_uegpe"]
+[ext_resource type="Script" path="res://Scripts/CameraController.gd" id="14_nvj6l"]
+[ext_resource type="PackedScene" uid="uid://bn4rqxygnm7gc" path="res://Scenes/Monsters/CreamMonster.tscn" id="15_q6cby"]
+[ext_resource type="PackedScene" uid="uid://bvibyd42fxp4l" path="res://Scenes/Player.tscn" id="16_soubw"]
+[ext_resource type="PackedScene" uid="uid://o05lff2sb8dv" path="res://Scenes/LevelFinish.tscn" id="17_i32vj"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_nimmk"]
 resource_name = "Doors"
-scenes/3/scene = ExtResource("14_jvlks")
-scenes/4/scene = ExtResource("8_0uwx8")
-scenes/5/scene = ExtResource("10_imu5l")
-scenes/6/scene = ExtResource("11_s2d35")
-scenes/7/scene = ExtResource("12_pdv4q")
+scenes/3/scene = ExtResource("8_b6ci4")
+scenes/4/scene = ExtResource("9_2yccx")
+scenes/5/scene = ExtResource("10_vrniv")
+scenes/6/scene = ExtResource("11_5k5x0")
+scenes/7/scene = ExtResource("12_bqt1k")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7bdi5"]
-texture = ExtResource("8_h03ci")
+texture = ExtResource("13_uegpe")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, 16)
@@ -67,43 +68,43 @@ scale = Vector2(3, 3)
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_07yky")
+script = ExtResource("1_upqh5")
 
 [node name="Under" type="TextureRect" parent="CanvasLayer/Control/IngredientsBar"]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 16.0
-texture = ExtResource("2_wn54c")
+texture = ExtResource("2_7sjuu")
 
 [node name="CreamBar" type="TextureProgressBar" parent="CanvasLayer/Control/IngredientsBar"]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 16.0
-texture_progress = ExtResource("3_3h2j3")
+texture_progress = ExtResource("3_lat7g")
 
 [node name="SpiceBar" type="TextureProgressBar" parent="CanvasLayer/Control/IngredientsBar"]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 16.0
-texture_progress = ExtResource("4_38jx6")
+texture_progress = ExtResource("4_37e6d")
 
 [node name="MeatBar" type="TextureProgressBar" parent="CanvasLayer/Control/IngredientsBar"]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 16.0
-texture_progress = ExtResource("5_hiay6")
+texture_progress = ExtResource("5_2a7b6")
 
 [node name="GuacBar" type="TextureProgressBar" parent="CanvasLayer/Control/IngredientsBar"]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 16.0
-texture_progress = ExtResource("6_hc0d3")
+texture_progress = ExtResource("6_hbgvo")
 
 [node name="Over" type="TextureRect" parent="CanvasLayer/Control/IngredientsBar"]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 16.0
-texture = ExtResource("7_0k35c")
+texture = ExtResource("7_kvmkn")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -124,10 +125,13 @@ layer_1/tile_data = PackedInt32Array(-131069, 0, 262144, -65536, 0, 196608, -655
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
-script = ExtResource("9_104ku")
+script = ExtResource("14_nvj6l")
 
-[node name="CreamMonster" parent="." instance=ExtResource("10_hpyon")]
+[node name="CreamMonster" parent="." instance=ExtResource("15_q6cby")]
 position = Vector2(44.72, -85.075)
 collision_layer = 1
 
-[node name="Player" parent="." instance=ExtResource("16_17jb1")]
+[node name="Player" parent="." instance=ExtResource("16_soubw")]
+
+[node name="LevelFinish" parent="." instance=ExtResource("17_i32vj")]
+position = Vector2(191.37, -68.41)
