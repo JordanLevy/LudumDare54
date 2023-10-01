@@ -4,6 +4,7 @@ class_name Projectile
 
 var player_offset = Vector2.ZERO
 var damage = 5
+var knockback = 2
 var ingredient_type = GlobalManager.IngredientType.PLAIN
 
 func _physics_process(delta):

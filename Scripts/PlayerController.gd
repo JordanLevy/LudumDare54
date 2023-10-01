@@ -35,7 +35,7 @@ func _ready():
 	death_timer = get_node("DeathTimer")
 	ingredients = [15, 15, 15, 5]
 	monster_rewards = [20, 15, 10, 0]
-	projectile_speed = [0, 150, 150, 150]
+	projectile_speed = [1, 150, 150, 150]
 	GlobalManager.monster_killed.connect(on_monster_killed)
 	emit_signal("ingredients_changed", ingredients)
 
@@ -118,9 +118,8 @@ func gain_ingredients(ingredient: GlobalManager.IngredientType, amount: int):
 		
 func shoot(ingredient: GlobalManager.IngredientType):
 	var direction = (mouse_position - global_position).normalized()
-
 	var instance = projectile_prefabs[ingredient].instantiate()
-	instance.global_position = global_position + instance.player_offset
+	instance.global_position = global_position
 	instance.velocity = direction * projectile_speed[ingredient]
 	get_parent().add_child(instance)
 

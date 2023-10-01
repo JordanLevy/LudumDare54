@@ -6,6 +6,7 @@ var area: Area2D
 var player: Player
 
 func _ready():
+	knockback = 10
 	player_offset = Vector2(0, -20)
 	ingredient_type = GlobalManager.IngredientType.CREAM
 	player = get_tree().get_root().get_node("Node2D/Player")

@@ -14,6 +14,7 @@ var flip_sprite = false
 var flip_threshold = 0.4
 var flip_cooldown = 0.5
 var time_since_last_flip = 0
+var knockback_coefficient = 10
 
 func _ready():
 	player = get_tree().get_root().get_node("Node2D/Player")
@@ -25,6 +26,9 @@ func take_damage(amount: int):
 		despawn()
 	health -= amount
 	
+func take_knockback(direction: Vector2, amount: float):
+	move_and_collide(direction * amount * knockback_coefficient)
+	
 func despawn():
 	GlobalManager.monster_killed.emit(ingredient_type)
 	queue_free()
@@ -32,6 +36,7 @@ func despawn():
 func _on_hurtbox_body_entered(body):
 	if body is Projectile:
 		take_damage(body.damage)
+		take_knockback(body.velocity.normalized(), body.knockback)
 		body.on_hit()
 
 func _physics_process(delta):
