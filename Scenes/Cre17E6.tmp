@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bn4rqxygnm7gc"]
+
+[ext_resource type="Script" path="res://Scripts/CreamMonster.gd" id="1_66gbt"]
+[ext_resource type="Texture2D" uid="uid://dpjxr6fms5m43" path="res://Assets/Monsters/CreamMonster.png" id="1_g0ury"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ppnx"]
+atlas = ExtResource("1_g0ury")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tymae"]
+atlas = ExtResource("1_g0ury")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bo6sb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ppnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tymae")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xqw1e"]
+radius = 20.0
+height = 52.0
+
+[node name="CreamMonster" type="CharacterBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_66gbt")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+sprite_frames = SubResource("SpriteFrames_bo6sb")
+autoplay = "default"
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+shape = SubResource("CapsuleShape2D_xqw1e")

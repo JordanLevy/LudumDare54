@@ -17,4 +17,4 @@ func _on_ingredients_changed(ingredients):
 	for i in range(0, GlobalManager.IngredientTypes.GUAC + 1):
 		bars[i].value = ingredients[i]
 		bars[i].position.x = total
-		total += ingredients[i]
+		total += ingredients[i] * 1.25

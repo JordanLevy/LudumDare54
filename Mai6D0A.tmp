@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://60g0forxgg2m"]
+[gd_scene load_steps=19 format=3 uid="uid://60g0forxgg2m"]
 
 [ext_resource type="Texture2D" uid="uid://ymkmnhqc73hy" path="res://Assets/IngredientsBar/Under.png" id="1_1xw8u"]
 [ext_resource type="Texture2D" uid="uid://bnni7u7ut862f" path="res://Assets/Tiles.png" id="1_6n6fh"]
@@ -18,16 +18,26 @@ texture = ExtResource("1_6n6fh")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, 16)
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
 1:0/0 = 0
 1:0/0/texture_origin = Vector2i(0, 16)
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
 2:0/0 = 0
 2:0/0/texture_origin = Vector2i(0, 16)
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -16, -32, 0, 0, 16, 32, 0)
 
 [sub_resource type="TileSet" id="TileSet_oudc8"]
 tile_shape = 1
 tile_offset_axis = 1
 tile_size = Vector2i(64, 32)
+physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_7bdi5")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_srigy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vara1"]
 atlas = ExtResource("12_4v0jv")
@@ -117,11 +127,15 @@ layer_0/tile_data = PackedInt32Array(3, 2, 0, 65538, 2, 0, 1, 2, 0, 65536, 2, 0,
 zoom = Vector2(2, 2)
 script = ExtResource("3_pp1ap")
 
-[node name="Player" type="Node2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("3_a4jkl")
 
 [node name="Sprite" type="Sprite2D" parent="Player"]
 texture = ExtResource("1_a03qe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-1, 28)
+shape = SubResource("CircleShape2D_srigy")
 
 [node name="CreamMonster" type="Node2D" parent="."]
 position = Vector2(100, 0)

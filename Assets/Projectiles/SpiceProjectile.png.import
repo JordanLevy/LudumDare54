@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0b1gegjmgpk3"
-path="res://.godot/imported/CreamMonster-Sheet.png-a684efb46b40754684d7d76fb2157326.ctex"
+uid="uid://vw65wr5ytbaf"
+path="res://.godot/imported/SpiceProjectile.png-faf97c52931d0070be54f5d9dce6f3c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Monsters/CreamMonster-Sheet.png"
-dest_files=["res://.godot/imported/CreamMonster-Sheet.png-a684efb46b40754684d7d76fb2157326.ctex"]
+source_file="res://Assets/Projectiles/SpiceProjectile.png"
+dest_files=["res://.godot/imported/SpiceProjectile.png-faf97c52931d0070be54f5d9dce6f3c4.ctex"]
 
 [params]
 

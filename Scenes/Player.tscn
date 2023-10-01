@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvibyd42fxp4l"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_fr1ph"]
+[ext_resource type="Texture2D" uid="uid://c4c1swc8nehsg" path="res://Assets/Burrito.png" id="2_w0fu8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_srigy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gerva"]
+atlas = ExtResource("2_w0fu8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1in8n"]
+atlas = ExtResource("2_w0fu8")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y4nyo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gerva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1in8n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_fr1ph")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 30)
+shape = SubResource("CircleShape2D_srigy")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-2, 30)
+sprite_frames = SubResource("SpriteFrames_y4nyo")
+autoplay = "default"
+frame_progress = 0.76747
+offset = Vector2(4, -30)

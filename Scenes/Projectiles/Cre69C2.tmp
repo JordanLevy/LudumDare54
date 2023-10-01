@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8uu3r4f62rdx"]
+
+[ext_resource type="Script" path="res://Scripts/CreamProjectile.gd" id="1_4syhn"]
+[ext_resource type="Texture2D" uid="uid://c1gfiel2742p" path="res://Assets/Projectiles/CreamProjectile.png" id="2_41n8r"]
+
+[sub_resource type="Gradient" id="Gradient_n8015"]
+colors = PackedColorArray(1, 1, 1, 1, 0.94902, 0.941176, 0.937255, 0.27451)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2k5ay"]
+gradient = SubResource("Gradient_n8015")
+
+[sub_resource type="CurveTexture" id="CurveTexture_akhhx"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w6csr"]
+emission_shape = 2
+emission_sphere_radius = 1.0
+particle_flag_disable_z = true
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+angular_velocity_min = -1000.0
+angular_velocity_max = -1000.0
+orbit_velocity_min = -1.0
+orbit_velocity_max = 1.0
+orbit_velocity_curve = SubResource("CurveTexture_akhhx")
+radial_accel_min = 3000.0
+radial_accel_max = 3000.0
+tangential_accel_min = 1000.0
+tangential_accel_max = 1000.0
+scale_min = 0.1
+scale_max = 0.6
+color_ramp = SubResource("GradientTexture1D_2k5ay")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mhh8x"]
+radius = 57.0351
+
+[node name="CreamProjectile" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_4syhn")
+
+[node name="Particle" type="GPUParticles2D" parent="."]
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_w6csr")
+texture = ExtResource("2_41n8r")
+lifetime = 0.3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mhh8x")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

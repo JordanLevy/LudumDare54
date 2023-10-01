@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://c55mpc0awlaxg"]
+
+[ext_resource type="Script" path="res://Scripts/NachoSwitch.gd" id="1_2e8uf"]
+[ext_resource type="Texture2D" uid="uid://bnni7u7ut862f" path="res://Assets/Tiles.png" id="1_40r6q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eppd"]
+atlas = ExtResource("1_40r6q")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxwvq"]
+atlas = ExtResource("1_40r6q")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ho7fq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eppd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxwvq")
+}],
+"loop": false,
+"name": &"activate",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2rmk"]
+atlas = ExtResource("1_40r6q")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clmvp"]
+atlas = ExtResource("1_40r6q")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exuxq"]
+atlas = ExtResource("1_40r6q")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ewm7"]
+atlas = ExtResource("1_40r6q")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpmvl"]
+atlas = ExtResource("1_40r6q")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wmfeg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2rmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clmvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exuxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ewm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpmvl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_upu1j"]
+radius = 7.0
+
+[node name="NachoSwitch" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_2e8uf")
+
+[node name="Pedestal" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_ho7fq")
+animation = &"activate"
+
+[node name="Nacho" type="AnimatedSprite2D" parent="."]
+position = Vector2(10, -38)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_wmfeg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -27)
+shape = SubResource("CircleShape2D_upu1j")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmf5c6jb8n3r0"]
+
+[ext_resource type="Script" path="res://Scripts/MeatProjectile.gd" id="1_rvlju"]
+[ext_resource type="Texture2D" uid="uid://bwxcnj13xs26d" path="res://Assets/Projectiles/MeatProjectile.png" id="2_5esji"]
+[ext_resource type="Texture2D" uid="uid://vw65wr5ytbaf" path="res://Assets/Projectiles/SpiceProjectile.png" id="2_ycn7s"]
+
+[sub_resource type="Gradient" id="Gradient_n8015"]
+colors = PackedColorArray(0.517016, 0.194094, 0.17726, 1, 0.45098, 0.243137, 0.203922, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2k5ay"]
+gradient = SubResource("Gradient_n8015")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w6csr"]
+emission_shape = 1
+emission_sphere_radius = 10.0
+particle_flag_disable_z = true
+gravity = Vector3(0, 30, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_max = 0.3
+color = Color(0.533333, 0.203922, 0.180392, 1)
+color_ramp = SubResource("GradientTexture1D_2k5ay")
+hue_variation_max = 0.08
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qoxfa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ycn7s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mhh8x"]
+radius = 8.0
+
+[node name="MeatProjectile" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_rvlju")
+
+[node name="Particle" type="GPUParticles2D" parent="."]
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_w6csr")
+texture = ExtResource("2_5esji")
+lifetime = 0.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 4.17233e-07)
+sprite_frames = SubResource("SpriteFrames_qoxfa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mhh8x")
