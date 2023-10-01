@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://60g0forxgg2m"]
+[gd_scene load_steps=24 format=3 uid="uid://60g0forxgg2m"]
 
 [ext_resource type="Script" path="res://Scripts/IngredientsBar.gd" id="1_upqh5"]
 [ext_resource type="Texture2D" uid="uid://ymkmnhqc73hy" path="res://Assets/IngredientsBar/Under.png" id="2_7sjuu"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bn4rqxygnm7gc" path="res://Scenes/Monsters/CreamMonster.tscn" id="15_q6cby"]
 [ext_resource type="PackedScene" uid="uid://bvibyd42fxp4l" path="res://Scenes/Player.tscn" id="16_soubw"]
 [ext_resource type="PackedScene" uid="uid://o05lff2sb8dv" path="res://Scenes/LevelFinish.tscn" id="17_i32vj"]
+[ext_resource type="PackedScene" uid="uid://drnmc3d3oe2uo" path="res://Scenes/Monsters/SpiceMonster.tscn" id="17_nom73"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_nimmk"]
 resource_name = "Doors"
@@ -75,7 +76,6 @@ y_sort_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 10
-visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -147,11 +147,13 @@ layer_1/tile_data = PackedInt32Array(-131069, 0, 262144, -65536, 0, 196608, -655
 zoom = Vector2(2, 2)
 script = ExtResource("14_nvj6l")
 
-[node name="CreamMonster" parent="." instance=ExtResource("15_q6cby")]
-position = Vector2(-139, -54)
-collision_layer = 1
-
 [node name="Player" parent="." instance=ExtResource("16_soubw")]
 
 [node name="LevelFinish" parent="." instance=ExtResource("17_i32vj")]
 position = Vector2(191.37, -68.41)
+
+[node name="SpiceMonster" parent="." instance=ExtResource("17_nom73")]
+position = Vector2(-118, 45)
+
+[node name="CreamMonster" parent="." instance=ExtResource("15_q6cby")]
+position = Vector2(-104, -77)
