@@ -1,24 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://drnmc3d3oe2uo"]
+[gd_scene load_steps=8 format=3 uid="uid://dlhqnm2bdiyj0"]
 
-[ext_resource type="Script" path="res://Scripts/SpiceMonster.gd" id="1_jbhw8"]
-[ext_resource type="Texture2D" uid="uid://brercf5nsdrf" path="res://Assets/Monsters/SpiceMonster.png" id="2_c58aj"]
+[ext_resource type="Script" path="res://Scripts/CreamMonster.gd" id="1_yakux"]
+[ext_resource type="Texture2D" uid="uid://dcktvccv2lijp" path="res://Assets/Monsters/MeatMonster.png" id="2_q2mcm"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_opseu"]
-atlas = ExtResource("2_c58aj")
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdctu"]
+atlas = ExtResource("2_q2mcm")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_45y4q"]
-atlas = ExtResource("2_c58aj")
+[sub_resource type="AtlasTexture" id="AtlasTexture_bf1xx"]
+atlas = ExtResource("2_q2mcm")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bo6sb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_opseu")
+"texture": SubResource("AtlasTexture_pdctu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_45y4q")
+"texture": SubResource("AtlasTexture_bf1xx")
 }],
 "loop": true,
 "name": &"default",
@@ -31,17 +31,18 @@ radius = 10.0499
 [sub_resource type="CircleShape2D" id="CircleShape2D_bijnw"]
 radius = 24.0
 
-[node name="SpiceMonster" type="CharacterBody2D"]
+[node name="MeatMonster" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 3
 collision_mask = 55
-script = ExtResource("1_jbhw8")
+script = ExtResource("1_yakux")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, 36)
 sprite_frames = SubResource("SpriteFrames_bo6sb")
 autoplay = "default"
+frame_progress = 0.320012
 offset = Vector2(0, -36)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -81,9 +81,9 @@ func player_movement(delta):
 	
 func turn_sprite(direction):
 	if direction.x < 0:
-		sprite.scale.x = -1
+		sprite.flip_h = true
 	elif direction.x > 0:
-		sprite.scale.x = 1
+		sprite.flip_h = false
 		
 func pay_ingredients(ingredient: GlobalManager.IngredientType, cost: int):
 	if ingredients[ingredient] - cost <= 0:
