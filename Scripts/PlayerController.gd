@@ -24,7 +24,7 @@ signal ingredients_changed(ingredients : Array[int])
 
 var ingredients: Array[int]
 var projectile_speed: Array[float]
-var projectile_cost: int = 0
+var projectile_cost: int = 10
 
 func _ready():
 	sprite = get_node("Sprite")

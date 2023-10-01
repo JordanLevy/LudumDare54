@@ -66,6 +66,15 @@ fire_secondary={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Enemies"
+2d_physics/layer_3="Walls"
+2d_physics/layer_4="Pedestals"
+2d_physics/layer_5="Doors"
+2d_physics/layer_6="Abilities"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
