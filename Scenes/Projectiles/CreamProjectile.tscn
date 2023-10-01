@@ -31,15 +31,6 @@ scale_max = 0.5
 color_ramp = SubResource("GradientTexture1D_2gg4n")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qoxfa"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_41n8r")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mhh8x"]
 radius = 41.0122
