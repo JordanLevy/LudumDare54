@@ -120,10 +120,10 @@ func shoot(ingredient: GlobalManager.IngredientType):
 	var direction = (mouse_position - global_position).normalized()
 
 	var instance = projectile_prefabs[ingredient].instantiate()
-	var pos = Vector2(global_position.x, global_position.y -10)
-	instance.global_position = pos
+	instance.global_position = global_position + instance.player_offset
 	instance.velocity = direction * projectile_speed[ingredient]
 	get_parent().add_child(instance)
+
 
 func take_damage(ingredient: GlobalManager.IngredientType, damage: int):
 	pay_ingredients(ingredient, damage)

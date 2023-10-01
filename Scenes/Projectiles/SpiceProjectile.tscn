@@ -39,7 +39,7 @@ radius = 8.0
 [node name="SpiceProjectile" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 32
-collision_mask = 0
+collision_mask = 4
 script = ExtResource("1_5uj3p")
 
 [node name="Particle" type="GPUParticles2D" parent="."]
@@ -56,3 +56,10 @@ sprite_frames = SubResource("SpriteFrames_qoxfa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mhh8x")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
