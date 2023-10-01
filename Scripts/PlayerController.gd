@@ -90,4 +90,5 @@ func shoot(ingredient: GlobalManager.IngredientTypes):
 	get_parent().add_child(instance)
 
 	instance.global_position = global_position
+	instance.position = position
 	instance.velocity = direction * projectile_speed[ingredient]

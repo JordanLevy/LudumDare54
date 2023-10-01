@@ -31,7 +31,7 @@ func set_game_state(state: GameState):
 	if state == GameState.MENU:
 		get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 	elif state == GameState.PLAY:
-		nacho_count = [0, 0, 0, 0, 0]
+		#nacho_count = [0, 0, 0, 0, 0]
 		get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 	elif state == GameState.WIN:
 		get_tree().change_scene_to_file("res://Scenes/WinScreen.tscn")

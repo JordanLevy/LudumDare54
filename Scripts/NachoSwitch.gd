@@ -23,7 +23,7 @@ func change_topping(ingredient: GlobalManager.IngredientTypes):
 
 
 func _on_body_entered(body):
-	print(body)
+	print(body.position)
 	if body is Projectile:
 		change_topping(body.ingredient_type)
 		body.on_hit()
