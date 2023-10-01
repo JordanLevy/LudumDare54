@@ -38,17 +38,20 @@ animations = [{
 radius = 8.0
 
 [node name="MeatProjectile" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_layer = 32
 collision_mask = 22
 script = ExtResource("1_rvlju")
 
 [node name="Particle" type="GPUParticles2D" parent="."]
+y_sort_enabled = true
 amount = 32
 process_material = SubResource("ParticleProcessMaterial_w6csr")
 texture = ExtResource("2_5esji")
 lifetime = 0.5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(0, 4.17233e-07)
 sprite_frames = SubResource("SpriteFrames_qoxfa")
 
