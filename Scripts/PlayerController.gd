@@ -84,6 +84,8 @@ func turn_sprite(direction):
 		sprite.flip_h = false
 		
 func pay_ingredients(ingredient: GlobalManager.IngredientType, cost: int):
+	if is_dead:
+		return
 	if ingredients[ingredient] - cost <= 0:
 		ingredients[ingredient] = 0
 		emit_signal("ingredients_changed", ingredients)
@@ -102,6 +104,8 @@ func sum(arr: Array):
 	return total
 	
 func gain_ingredients(ingredient: GlobalManager.IngredientType, amount: int):
+	if is_dead:
+		return
 	var total_ingredients = sum(ingredients)
 	if total_ingredients + amount >= 100:
 		ingredients[ingredient] += min(amount, 100 - total_ingredients)
