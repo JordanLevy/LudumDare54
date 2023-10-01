@@ -141,5 +141,3 @@ collision_layer = 1
 
 [node name="LevelFinish" parent="." instance=ExtResource("17_i32vj")]
 position = Vector2(191.37, -68.41)
-
-[connection signal="body_entered" from="TileMap/@Area2D@36489" to="TileMap/@Area2D@36489" method="_on_body_entered" flags=18]
