@@ -134,7 +134,7 @@ zoom = Vector2(2, 2)
 script = ExtResource("14_nvj6l")
 
 [node name="CreamMonster" parent="." instance=ExtResource("15_q6cby")]
-position = Vector2(44.72, -85.075)
+position = Vector2(-139, -54)
 collision_layer = 1
 
 [node name="Player" parent="." instance=ExtResource("16_soubw")]

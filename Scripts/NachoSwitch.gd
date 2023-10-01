@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 
 class_name NachoSwitch
 
@@ -21,8 +21,7 @@ func change_topping(ingredient: GlobalManager.IngredientTypes):
 	print("emit", GlobalManager.nacho_count)
 	GlobalManager.nacho_activated.emit()
 
-
-func _on_body_entered(body):
+func _on_area_2d_body_entered(body):
 	print(body.position)
 	if body is Projectile:
 		change_topping(body.ingredient_type)
