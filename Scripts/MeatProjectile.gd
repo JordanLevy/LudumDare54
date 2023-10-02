@@ -6,7 +6,6 @@ var player: Player
 
 func _ready():
 	player_offset = Vector2(0, -30)
-	damage = 15
 	knockback = -5
 	speed = 40
 	endlag = 0.5

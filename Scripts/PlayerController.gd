@@ -108,10 +108,13 @@ func turn_sprite(direction):
 		sprite.flip_h = false
 		
 func pay_ingredients(ingredient: GlobalManager.IngredientType, cost: int):
-	if is_dead or GlobalManager.infinite_ingredients:
+	if is_dead:
+		return
+	spawn_damage_indicator(str(-cost/5.0), global_position, ingredient)
+	if GlobalManager.infinite_ingredients:
 		return
 	if ingredients[ingredient] - cost <= 0:
-		spawn_damage_indicator(str(-cost/5.0), global_position, ingredient)
+		
 		ingredients[ingredient] = 0
 		emit_signal("ingredients_changed", ingredients)
 		GlobalManager.loss_method = GlobalManager.LossMethod.UNDERFILL
@@ -119,7 +122,6 @@ func pay_ingredients(ingredient: GlobalManager.IngredientType, cost: int):
 		death_timer.start()
 		is_dead = true
 		return
-	spawn_damage_indicator(str(-cost/5.0), global_position, ingredient)
 	ingredients[ingredient] -= cost
 	emit_signal("ingredients_changed", ingredients)
 	
@@ -133,6 +135,7 @@ func gain_ingredients(ingredient: GlobalManager.IngredientType, amount: int):
 	if is_dead or GlobalManager.infinite_ingredients:
 		return
 	var total_ingredients = sum(ingredients)
+	spawn_damage_indicator("+" + str(amount/5.0), global_position, ingredient)
 	if total_ingredients + amount >= 100:
 		ingredients[ingredient] += min(amount, 100 - total_ingredients)
 		emit_signal("ingredients_changed", ingredients)

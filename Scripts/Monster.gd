@@ -17,6 +17,8 @@ var time_since_last_flip = 0
 var knockback_coefficient = 10
 var is_aggro: bool = false
 var sight_range = 250
+@export var can_move: bool = true
+@export var is_invincible: bool = false
 
 func _ready():
 	player = get_tree().get_root().get_node("Node2D/Player")
@@ -41,6 +43,8 @@ func take_damage(damage_type: GlobalManager.IngredientType, amount: int):
 		text = "*{amount}*"
 	
 	spawn_damage_indicator(text.format({"amount": -amount/5.0}), global_position, damage_type)
+	if is_invincible:
+		return
 	if health - amount <= 0:
 		despawn()
 	health -= amount
@@ -65,15 +69,14 @@ func _on_hurtbox_body_entered(body):
 func _physics_process(delta):
 	if (global_position - player.global_position).length() <= sight_range:
 		is_aggro = true
-	if !is_aggro:
-		return
-	time_since_last_flip += delta
-	(await get_tree().process_frame)
-	var direction = Vector3()
-	nav.target_position = player.global_position
-	direction = nav.get_next_path_position() - global_position
-	direction = direction.normalized()
-	velocity = direction * speed * delta
+	if is_aggro and can_move:
+		time_since_last_flip += delta
+		(await get_tree().process_frame)
+		var direction = Vector3()
+		nav.target_position = player.global_position
+		direction = nav.get_next_path_position() - global_position
+		direction = direction.normalized()
+		velocity = direction * speed * delta
 	
 	move_and_collide(velocity)
 	turn_sprite(velocity)
