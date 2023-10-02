@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdsiukdmeeghn"]
+
+[ext_resource type="PackedScene" uid="uid://d4l0jkj7yd0li" path="res://Scenes/Doors/Door.tscn" id="1_hbmvy"]
+
+[node name="PlayerDoor1" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Door" parent="." instance=ExtResource("1_hbmvy")]
+criteria_type = 1
+criteria = Array[int]([5, 5, 5, 5])

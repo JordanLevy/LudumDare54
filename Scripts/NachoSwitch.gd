@@ -18,13 +18,10 @@ func change_topping(ingredient: GlobalManager.IngredientType):
 	GlobalManager.nacho_count[nacho.frame] -= 1
 	GlobalManager.nacho_count[ingredient] += 1
 	nacho.frame = ingredient
-	print("emit", GlobalManager.nacho_count)
 	GlobalManager.nacho_activated.emit()
 
 func _on_area_2d_body_entered(body):
-	print(body.position)
 	if body is Projectile:
 		change_topping(body.ingredient_type)
 		GlobalManager.play_sound_effect(GlobalManager.SoundType.HIT_NACHO, body.ingredient_type, self)
-		print("b", body)
 		body.on_hit()

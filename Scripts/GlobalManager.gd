@@ -126,7 +126,7 @@ func set_game_state(state: GameState):
 		checkpoint = "res://Scenes/Tutorial.tscn"
 		loss_method = LossMethod.NONE
 		loss_ingredient = IngredientType.PLAIN
-		infinite_ingredients = true
+		infinite_ingredients = false
 		get_tree().change_scene_to_file(checkpoint)
 	elif state == GameState.LEVEL1:
 		checkpoint = "res://Scenes/Level1.tscn"

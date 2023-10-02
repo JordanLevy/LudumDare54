@@ -116,14 +116,14 @@ func pay_ingredients(ingredient: GlobalManager.IngredientType, cost: int):
 	if ingredients[ingredient] - cost <= 0:
 		
 		ingredients[ingredient] = 0
-		emit_signal("ingredients_changed", ingredients)
+		ingredients_changed.emit(ingredients)
 		GlobalManager.loss_method = GlobalManager.LossMethod.UNDERFILL
 		GlobalManager.loss_ingredient = ingredient
 		death_timer.start()
 		is_dead = true
 		return
 	ingredients[ingredient] -= cost
-	emit_signal("ingredients_changed", ingredients)
+	ingredients_changed.emit(ingredients)
 	
 func sum(arr: Array):
 	var total = 0

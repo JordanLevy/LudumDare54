@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://57peuvssmvoh"]
+
+[ext_resource type="Script" path="res://Scripts/IngredientsBar.gd" id="1_atvby"]
+[ext_resource type="Texture2D" uid="uid://ymkmnhqc73hy" path="res://Assets/IngredientsBar/Under.png" id="2_yrucq"]
+[ext_resource type="Texture2D" uid="uid://clpaj0sm6gfli" path="res://Assets/IngredientsBar/Cream.png" id="3_t8dwr"]
+[ext_resource type="Texture2D" uid="uid://d4gj0drigpvig" path="res://Assets/IngredientsBar/Spice.png" id="4_7n6vb"]
+[ext_resource type="Texture2D" uid="uid://b3wa33333ttyo" path="res://Assets/IngredientsBar/Meat.png" id="5_asjs2"]
+[ext_resource type="Texture2D" uid="uid://b10ly5ir2vidv" path="res://Assets/IngredientsBar/Guac.png" id="6_h6br8"]
+[ext_resource type="Texture2D" uid="uid://bn2u6l6jtfrg3" path="res://Assets/IngredientsBar/Over.png" id="7_hicbj"]
+
+[node name="IngredientsBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_atvby")
+
+[node name="Under" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 16.0
+texture = ExtResource("2_yrucq")
+
+[node name="CreamBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 16.0
+texture_progress = ExtResource("3_t8dwr")
+
+[node name="SpiceBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 16.0
+texture_progress = ExtResource("4_7n6vb")
+
+[node name="MeatBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 16.0
+texture_progress = ExtResource("5_asjs2")
+
+[node name="GuacBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 16.0
+texture_progress = ExtResource("6_h6br8")
+
+[node name="Over" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 16.0
+texture = ExtResource("7_hicbj")

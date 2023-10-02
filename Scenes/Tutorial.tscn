@@ -1,12 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://bqv6ts267n2eq"]
+[gd_scene load_steps=25 format=3 uid="uid://bqv6ts267n2eq"]
 
-[ext_resource type="Script" path="res://Scripts/IngredientsBar.gd" id="1_4rcln"]
-[ext_resource type="Texture2D" uid="uid://ymkmnhqc73hy" path="res://Assets/IngredientsBar/Under.png" id="2_nrk5q"]
-[ext_resource type="Texture2D" uid="uid://clpaj0sm6gfli" path="res://Assets/IngredientsBar/Cream.png" id="3_fcw5j"]
-[ext_resource type="Texture2D" uid="uid://d4gj0drigpvig" path="res://Assets/IngredientsBar/Spice.png" id="4_eawlf"]
-[ext_resource type="Texture2D" uid="uid://b3wa33333ttyo" path="res://Assets/IngredientsBar/Meat.png" id="5_brf03"]
-[ext_resource type="Texture2D" uid="uid://b10ly5ir2vidv" path="res://Assets/IngredientsBar/Guac.png" id="6_ecgd4"]
-[ext_resource type="Texture2D" uid="uid://bn2u6l6jtfrg3" path="res://Assets/IngredientsBar/Over.png" id="7_wm72h"]
+[ext_resource type="PackedScene" uid="uid://57peuvssmvoh" path="res://Scenes/IngredientsBar.tscn" id="1_k0ily"]
 [ext_resource type="PackedScene" uid="uid://c55mpc0awlaxg" path="res://Scenes/NachoSwitch.tscn" id="8_0nl3f"]
 [ext_resource type="PackedScene" uid="uid://slughw6gxek1" path="res://Scenes/Doors/MeatDoorFlip.tscn" id="8_a6sd6"]
 [ext_resource type="PackedScene" uid="uid://dirm853ccicvy" path="res://Scenes/Doors/CreamDoor.tscn" id="9_8ve6h"]
@@ -23,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://drnmc3d3oe2uo" path="res://Scenes/Monsters/SpiceMonster.tscn" id="21_txwwe"]
 [ext_resource type="PackedScene" uid="uid://bn4rqxygnm7gc" path="res://Scenes/Monsters/CreamMonster.tscn" id="22_wd1s6"]
 [ext_resource type="PackedScene" uid="uid://dlhqnm2bdiyj0" path="res://Scenes/Monsters/MeatMonster.tscn" id="23_6hlu8"]
+[ext_resource type="PackedScene" uid="uid://cdsiukdmeeghn" path="res://Scenes/Doors/PlayerDoor1.tscn" id="24_11qmx"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_nimmk"]
 resource_name = "Doors"
@@ -102,47 +97,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(3, 3)
 
-[node name="IngredientsBar" type="Control" parent="CanvasLayer/Control"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("1_4rcln")
-
-[node name="Under" type="TextureRect" parent="CanvasLayer/Control/IngredientsBar"]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 16.0
-texture = ExtResource("2_nrk5q")
-
-[node name="CreamBar" type="TextureProgressBar" parent="CanvasLayer/Control/IngredientsBar"]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 16.0
-texture_progress = ExtResource("3_fcw5j")
-
-[node name="SpiceBar" type="TextureProgressBar" parent="CanvasLayer/Control/IngredientsBar"]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 16.0
-texture_progress = ExtResource("4_eawlf")
-
-[node name="MeatBar" type="TextureProgressBar" parent="CanvasLayer/Control/IngredientsBar"]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 16.0
-texture_progress = ExtResource("5_brf03")
-
-[node name="GuacBar" type="TextureProgressBar" parent="CanvasLayer/Control/IngredientsBar"]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 16.0
-texture_progress = ExtResource("6_ecgd4")
-
-[node name="Over" type="TextureRect" parent="CanvasLayer/Control/IngredientsBar"]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 16.0
-texture = ExtResource("7_wm72h")
+[node name="IngredientsBar" parent="CanvasLayer/Control" instance=ExtResource("1_k0ily")]
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -165,7 +120,7 @@ zoom = Vector2(2, 2)
 script = ExtResource("14_pdgxh")
 
 [node name="Player" parent="." instance=ExtResource("15_ii6tu")]
-position = Vector2(449, -429)
+position = Vector2(-95, 83)
 collision_mask = 29
 
 [node name="SpiceMonster" parent="." instance=ExtResource("21_txwwe")]
@@ -191,3 +146,6 @@ position = Vector2(-511, -907)
 rotation = -0.453786
 scale = Vector2(7.61, 7.61)
 next_state = 2
+
+[node name="PlayerDoor1" parent="." instance=ExtResource("24_11qmx")]
+position = Vector2(163, -79)

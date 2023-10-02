@@ -14,7 +14,6 @@ func _ready():
 
 func _on_ingredients_changed(ingredients):
 	var total: float = 0;
-	print(ingredients)
 	for i in range(0, GlobalManager.IngredientType.GUAC + 1):
 		bars[i].value = ingredients[i]
 		bars[i].position.x = total
