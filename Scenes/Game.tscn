@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://drnmc3d3oe2uo" path="res://Scenes/Monsters/SpiceMonster.tscn" id="17_nom73"]
 [ext_resource type="PackedScene" uid="uid://dlhqnm2bdiyj0" path="res://Scenes/Monsters/MeatMonster.tscn" id="19_lexpg"]
 
-[node name="Node2D2" type="Node2D"]
+[node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

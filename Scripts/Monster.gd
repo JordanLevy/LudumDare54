@@ -64,7 +64,8 @@ func _on_hurtbox_body_entered(body):
 		if ingredient_type == GlobalManager.IngredientType.MEAT:
 			await GlobalManager.hitlag(0.1, 0.2)
 		take_knockback(kbv, bk)
-		body.on_hit()
+		if body:
+			body.on_hit()
 
 func _physics_process(delta):
 	if (global_position - player.global_position).length() <= sight_range:

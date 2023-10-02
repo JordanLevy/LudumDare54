@@ -138,14 +138,14 @@ func gain_ingredients(ingredient: GlobalManager.IngredientType, amount: int):
 	spawn_damage_indicator("+" + str(amount/5.0), global_position, ingredient)
 	if total_ingredients + amount >= 100:
 		ingredients[ingredient] += min(amount, 100 - total_ingredients)
-		emit_signal("ingredients_changed", ingredients)
+		ingredients_changed.emit(ingredients)
 		GlobalManager.loss_method = GlobalManager.LossMethod.OVERFILL
 		GlobalManager.loss_ingredient = ingredient
 		death_timer.start()
 		is_dead = true
 		return
 	ingredients[ingredient] += amount
-	emit_signal("ingredients_changed", ingredients)
+	ingredients_changed.emit(ingredients)
 		
 func shoot(ingredient: GlobalManager.IngredientType):
 	var instance = projectile_prefabs[ingredient].instantiate()
