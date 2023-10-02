@@ -27,6 +27,7 @@ func take_damage(amount: int):
 	health -= amount
 	
 func take_knockback(direction: Vector2, amount: float):
+	print(direction * amount * knockback_coefficient)
 	move_and_collide(direction * amount * knockback_coefficient)
 	
 func despawn():

@@ -1,59 +1,97 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmf5c6jb8n3r0"]
+[gd_scene load_steps=12 format=3 uid="uid://dmf5c6jb8n3r0"]
 
 [ext_resource type="Script" path="res://Scripts/MeatProjectile.gd" id="1_rvlju"]
 [ext_resource type="Texture2D" uid="uid://bwxcnj13xs26d" path="res://Assets/Projectiles/MeatProjectile.png" id="2_5esji"]
-[ext_resource type="Texture2D" uid="uid://vw65wr5ytbaf" path="res://Assets/Projectiles/SpiceProjectile.png" id="2_ycn7s"]
 
-[sub_resource type="Gradient" id="Gradient_n8015"]
-colors = PackedColorArray(0.517016, 0.194094, 0.17726, 1, 0.45098, 0.243137, 0.203922, 0)
+[sub_resource type="Curve" id="Curve_dgsfi"]
+_data = [Vector2(0, 0.473684), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_2k5ay"]
-gradient = SubResource("Gradient_n8015")
+[sub_resource type="CurveTexture" id="CurveTexture_i6oyk"]
+curve = SubResource("Curve_dgsfi")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w6csr"]
 emission_shape = 1
 emission_sphere_radius = 10.0
 particle_flag_disable_z = true
-gravity = Vector3(0, 30, 0)
+gravity = Vector3(0, -1, 0)
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-scale_min = 0.1
-scale_max = 0.3
+scale_min = 0.01
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_i6oyk")
 color = Color(0.533333, 0.203922, 0.180392, 1)
-color_ramp = SubResource("GradientTexture1D_2k5ay")
-hue_variation_max = 0.08
+hue_variation_max = 0.01
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74h04"]
+atlas = ExtResource("2_5esji")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7yfa"]
+atlas = ExtResource("2_5esji")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03x1v"]
+atlas = ExtResource("2_5esji")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdr8p"]
+atlas = ExtResource("2_5esji")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qoxfa"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ycn7s")
+"texture": SubResource("AtlasTexture_74h04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7yfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03x1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdr8p")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 60.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mhh8x"]
-radius = 8.0
+radius = 32.0624
 
 [node name="MeatProjectile" type="CharacterBody2D"]
-y_sort_enabled = true
+show_behind_parent = true
+z_index = 1000
 collision_layer = 32
 collision_mask = 22
 script = ExtResource("1_rvlju")
 
 [node name="Particle" type="GPUParticles2D" parent="."]
+visible = false
 y_sort_enabled = true
-amount = 32
+position = Vector2(0, 28.825)
+amount = 30
 process_material = SubResource("ParticleProcessMaterial_w6csr")
 texture = ExtResource("2_5esji")
 lifetime = 0.5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-y_sort_enabled = true
+z_index = 1000
 position = Vector2(0, 4.17233e-07)
 sprite_frames = SubResource("SpriteFrames_qoxfa")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mhh8x")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

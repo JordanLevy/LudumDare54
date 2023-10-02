@@ -11,13 +11,19 @@ var projectile_prefabs: Array[PackedScene] = [
 
 var sprite: AnimatedSprite2D
 
-const max_speed = 200
-const accel = 3000
+const dash_speed = 50000
+var dash_velocity = Vector2.ZERO
+
+var max_speed = 200
+
+var accel = 3000
+
 const friction = 1200
 
 var input = Vector2.ZERO
-var fire_primary = false
-var fire_secondary = false
+var fire_cream = false
+var fire_spice = false
+var fire_meat = false
 var mouse_position = Vector2.ZERO
 
 signal ingredients_changed(ingredients : Array[int])
@@ -26,11 +32,14 @@ var ingredients: Array[int]
 var monster_rewards: Array[int]
 var projectile_cost: int = 5
 
+var dash_timer: Timer
+
 var death_timer: Timer
 var is_dead = false
 
 func _ready():
 	sprite = get_node("Sprite")
+	dash_timer = get_node("DashTimer")
 	death_timer = get_node("DeathTimer")
 	ingredients = [15, 15, 15, 5]
 	monster_rewards = [20, 15, 10, 0]
@@ -50,8 +59,10 @@ func get_input():
 		input = input.normalized()
 	else:
 		input = Vector2.ZERO
-	fire_primary = Input.is_action_just_pressed("fire_primary")
-	fire_secondary = Input.is_action_just_pressed("fire_secondary")
+	fire_cream = Input.is_action_just_pressed("fire_cream")
+	fire_spice = Input.is_action_just_pressed("fire_spice")
+	fire_meat = Input.is_action_just_pressed("fire_meat")
+	
 
 func player_movement(delta):
 	get_input()
@@ -67,12 +78,19 @@ func player_movement(delta):
 		velocity.x = clamp(velocity.x, -max_speed, max_speed)
 		velocity.y = clamp(velocity.y, -max_speed/2.0, max_speed/2.0)
 	
-	if fire_primary:
+	if fire_cream:
 		pay_ingredients(GlobalManager.IngredientType.CREAM, projectile_cost)
 		shoot(GlobalManager.IngredientType.CREAM)
-	elif fire_secondary:
+	elif fire_spice:
 		pay_ingredients(GlobalManager.IngredientType.SPICE, projectile_cost)
 		shoot(GlobalManager.IngredientType.SPICE)
+	elif fire_meat:
+		pay_ingredients(GlobalManager.IngredientType.MEAT, projectile_cost)
+		shoot(GlobalManager.IngredientType.MEAT)
+		start_dash()
+		
+	if not dash_timer.is_stopped():
+		velocity = dash_velocity * delta
 
 	move_and_slide()
 	turn_sprite(input)
@@ -119,14 +137,22 @@ func gain_ingredients(ingredient: GlobalManager.IngredientType, amount: int):
 	emit_signal("ingredients_changed", ingredients)
 		
 func shoot(ingredient: GlobalManager.IngredientType):
-	
 	var instance = projectile_prefabs[ingredient].instantiate()
 	instance.target = mouse_position
 	instance.global_position = global_position
 	get_parent().add_child(instance)
+	
+func start_dash():
+	dash_timer.start()
+	if velocity.length() > 0.01:
+		dash_velocity = velocity.normalized() * dash_speed
+	else:
+		dash_velocity = (mouse_position - global_position).normalized() * dash_speed
 
 
 func take_damage(ingredient: GlobalManager.IngredientType, damage: int):
+	if not dash_timer.is_stopped():
+		return
 	pay_ingredients(ingredient, damage)
 	
 
@@ -140,3 +166,7 @@ func _on_death_timer_timeout():
 	
 func on_monster_killed(type: GlobalManager.IngredientType):
 	gain_ingredients(type, monster_rewards[type])
+
+
+func _on_dash_timer_timeout():
+	velocity = Vector2.ZERO
