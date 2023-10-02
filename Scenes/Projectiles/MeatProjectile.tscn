@@ -66,7 +66,7 @@ radius = 32.0624
 show_behind_parent = true
 z_index = 1000
 collision_layer = 32
-collision_mask = 22
+collision_mask = 0
 script = ExtResource("1_rvlju")
 
 [node name="Particle" type="GPUParticles2D" parent="."]
