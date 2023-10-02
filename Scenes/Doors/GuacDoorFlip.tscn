@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnwe11611r3cq"]
+[gd_scene load_steps=3 format=3 uid="uid://dnwe11611r3cq"]
 
 [ext_resource type="PackedScene" uid="uid://d4l0jkj7yd0li" path="res://Scenes/Doors/Door.tscn" id="1_ek2e8"]
+[ext_resource type="SpriteFrames" uid="uid://bckkdgctderd2" path="res://Scenes/Doors/DoorFrames/GuacDoor.tres" id="2_q4dhh"]
 
 [node name="GuacDoorFlip" type="Node2D"]
 y_sort_enabled = true
@@ -8,3 +9,8 @@ y_sort_enabled = true
 [node name="Door" parent="." instance=ExtResource("1_ek2e8")]
 scale = Vector2(-1, 1)
 criteria = Array[int]([0, 0, 0, 1])
+
+[node name="AnimatedSprite2D" parent="Door" index="0"]
+sprite_frames = ExtResource("2_q4dhh")
+
+[editable path="Door"]

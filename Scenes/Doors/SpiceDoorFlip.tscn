@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://clry7ydaoc2vg"]
+[gd_scene load_steps=3 format=3 uid="uid://clry7ydaoc2vg"]
 
 [ext_resource type="PackedScene" uid="uid://d4l0jkj7yd0li" path="res://Scenes/Doors/Door.tscn" id="1_cpkuj"]
+[ext_resource type="SpriteFrames" uid="uid://p5p57tvfyk5n" path="res://Scenes/Doors/DoorFrames/SpiceDoor.tres" id="2_6hsie"]
 
 [node name="SpiceDoorFlip" type="Node2D"]
 y_sort_enabled = true
@@ -8,3 +9,8 @@ y_sort_enabled = true
 [node name="Door" parent="." instance=ExtResource("1_cpkuj")]
 scale = Vector2(-1, 1)
 criteria = Array[int]([0, 1, 0, 0])
+
+[node name="AnimatedSprite2D" parent="Door" index="0"]
+sprite_frames = ExtResource("2_6hsie")
+
+[editable path="Door"]

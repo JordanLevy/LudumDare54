@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bt0m4c8jfdq7a"]
+[gd_scene load_steps=3 format=3 uid="uid://bt0m4c8jfdq7a"]
 
 [ext_resource type="PackedScene" uid="uid://d4l0jkj7yd0li" path="res://Scenes/Doors/Door.tscn" id="1_157ky"]
+[ext_resource type="SpriteFrames" uid="uid://byg5rreyqnfma" path="res://Scenes/Doors/DoorFrames/CreamDoor.tres" id="2_x4krr"]
 
 [node name="CreamDoorFlip" type="Node2D"]
 y_sort_enabled = true
 
 [node name="Door" parent="." instance=ExtResource("1_157ky")]
 scale = Vector2(-1, 1)
+
+[node name="AnimatedSprite2D" parent="Door" index="0"]
+sprite_frames = ExtResource("2_x4krr")
+
+[editable path="Door"]
