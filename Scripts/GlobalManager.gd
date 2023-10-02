@@ -33,6 +33,11 @@ var game_state : GameState = GameState.PLAY
 var loss_method: LossMethod = LossMethod.NONE
 var loss_ingredient: IngredientType = IngredientType.PLAIN
 
+func hitlag(time_scale: float, duration: float):
+	Engine.time_scale = time_scale
+	await(get_tree().create_timer(duration * time_scale).timeout)
+	Engine.time_scale = 1.0
+
 func is_super_effective(attack: IngredientType, target: IngredientType):
 	# cream extinguishes spice
 	if attack == IngredientType.CREAM:

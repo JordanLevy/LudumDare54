@@ -37,6 +37,8 @@ var dash_timer: Timer
 var death_timer: Timer
 var is_dead = false
 
+var knockback_coefficient = 10
+
 func _ready():
 	sprite = get_node("Sprite")
 	dash_timer = get_node("DashTimer")
@@ -155,10 +157,17 @@ func take_damage(ingredient: GlobalManager.IngredientType, damage: int):
 		return
 	pay_ingredients(ingredient, damage)
 	
+func take_knockback(direction: Vector2, amount: float):
+	move_and_collide(direction * amount * knockback_coefficient)
 
 func _on_hurtbox_body_entered(body):
+	if not dash_timer.is_stopped():
+		return
 	if body is Monster:
+		velocity = Vector2.ZERO
 		take_damage(body.ingredient_type, body.damage)
+		await GlobalManager.hitlag(0.1, 0.4)
+		take_knockback((global_position - body.global_position).normalized(), 4)
 
 
 func _on_death_timer_timeout():
