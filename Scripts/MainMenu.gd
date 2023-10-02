@@ -12,7 +12,7 @@ func _process(delta):
 
 
 func _on_play_button_pressed():
-	GlobalManager.set_game_state(GlobalManager.GameState.PLAY)
+	GlobalManager.set_game_state(GlobalManager.GameState.TUTORIAL)
 
 
 func _on_settings_button_pressed():

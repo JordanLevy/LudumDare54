@@ -1,0 +1,112 @@
+[gd_scene load_steps=16 format=3 uid="uid://b6xwg0oi07avv"]
+
+[ext_resource type="Script" path="res://Scripts/MeatDoor.gd" id="1_mgbm0"]
+[ext_resource type="Texture2D" uid="uid://dg7niwcyytg8l" path="res://Assets/Door.png" id="2_qua78"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luhli"]
+atlas = ExtResource("2_qua78")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sjbv"]
+atlas = ExtResource("2_qua78")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3miy"]
+atlas = ExtResource("2_qua78")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g14u6"]
+atlas = ExtResource("2_qua78")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hxgy"]
+atlas = ExtResource("2_qua78")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxfn2"]
+atlas = ExtResource("2_qua78")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkgyp"]
+atlas = ExtResource("2_qua78")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmtyh"]
+atlas = ExtResource("2_qua78")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuwc4"]
+atlas = ExtResource("2_qua78")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fp0ql"]
+atlas = ExtResource("2_qua78")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17ekm"]
+atlas = ExtResource("2_qua78")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i5f8o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luhli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6sjbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3miy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g14u6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hxgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxfn2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkgyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmtyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuwc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fp0ql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17ekm")
+}],
+"loop": false,
+"name": &"open",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86jyl"]
+size = Vector2(31.3034, 1.81261)
+
+[node name="MeatDoor" type="CharacterBody2D"]
+y_sort_enabled = true
+position = Vector2(0, -16)
+scale = Vector2(-1, 1)
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_mgbm0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-18, 18)
+sprite_frames = SubResource("SpriteFrames_i5f8o")
+animation = &"open"
+centered = false
+offset = Vector2(-14, -50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-16.9982, 17.9962)
+rotation = 0.453786
+shape = SubResource("RectangleShape2D_86jyl")

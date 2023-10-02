@@ -1,0 +1,112 @@
+[gd_scene load_steps=16 format=3 uid="uid://cujj2s4fw6s3j"]
+
+[ext_resource type="Script" path="res://Scripts/CreamDoor.gd" id="1_ig54q"]
+[ext_resource type="Texture2D" uid="uid://dg7niwcyytg8l" path="res://Assets/Door.png" id="2_evbmm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsugl"]
+atlas = ExtResource("2_evbmm")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yeju"]
+atlas = ExtResource("2_evbmm")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6p4j"]
+atlas = ExtResource("2_evbmm")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d504l"]
+atlas = ExtResource("2_evbmm")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_defg8"]
+atlas = ExtResource("2_evbmm")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksshx"]
+atlas = ExtResource("2_evbmm")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuynj"]
+atlas = ExtResource("2_evbmm")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5b8e"]
+atlas = ExtResource("2_evbmm")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6uwj"]
+atlas = ExtResource("2_evbmm")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wom17"]
+atlas = ExtResource("2_evbmm")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1j0h"]
+atlas = ExtResource("2_evbmm")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7b007"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsugl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yeju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6p4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d504l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_defg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksshx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuynj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5b8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6uwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wom17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1j0h")
+}],
+"loop": false,
+"name": &"open",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgaox"]
+size = Vector2(31.3034, 1.79759)
+
+[node name="CreamDoor" type="CharacterBody2D"]
+y_sort_enabled = true
+position = Vector2(0, -16)
+scale = Vector2(-1, 1)
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_ig54q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-18, 18)
+sprite_frames = SubResource("SpriteFrames_7b007")
+animation = &"open"
+centered = false
+offset = Vector2(-14, -50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-17, 18)
+rotation = 0.453786
+shape = SubResource("RectangleShape2D_sgaox")

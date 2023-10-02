@@ -11,9 +11,10 @@ enum IngredientType {
 enum GameState {
 	MENU = 0,
 	PLAY = 1,
-	WIN = 2,
-	LOSE = 3,
-	SETTINGS = 4
+	TUTORIAL = 2,
+	WIN = 3,
+	LOSE = 4,
+	SETTINGS = 5
 }
 
 enum LossMethod {
@@ -29,13 +30,15 @@ signal monster_killed
 
 var is_menu_enabled = true
 var nacho_count : Array[int] = [0, 0, 0, 0, 0]
-var game_state : GameState = GameState.PLAY
+var game_state : GameState = GameState.MENU
 var loss_method: LossMethod = LossMethod.NONE
 var loss_ingredient: IngredientType = IngredientType.PLAIN
 const damage_indicator = preload("res://Scenes/UI/DamageIndicator.tscn")
 
 var strong_matchups = [IngredientType.SPICE, IngredientType.MEAT, IngredientType.CREAM, null, null]
 var weak_matchups = [IngredientType.MEAT, IngredientType.CREAM, IngredientType.SPICE, null, null]
+
+var infinite_ingredients = false
 
 func hitlag(time_scale: float, duration: float):
 	Engine.time_scale = time_scale
@@ -68,9 +71,15 @@ func set_game_state(state: GameState):
 	game_state = state
 	if state == GameState.MENU:
 		get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+	elif state == GameState.TUTORIAL:
+		loss_method = LossMethod.NONE
+		loss_ingredient = IngredientType.PLAIN
+		infinite_ingredients = true
+		get_tree().change_scene_to_file("res://Scenes/Tutorial.tscn")
 	elif state == GameState.PLAY:
 		loss_method = LossMethod.NONE
 		loss_ingredient = IngredientType.PLAIN
+		infinite_ingredients = false
 		get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 	elif state == GameState.WIN:
 		nacho_count = [0, 0, 0, 0, 0]

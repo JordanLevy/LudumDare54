@@ -104,7 +104,7 @@ func turn_sprite(direction):
 		sprite.flip_h = false
 		
 func pay_ingredients(ingredient: GlobalManager.IngredientType, cost: int):
-	if is_dead:
+	if is_dead or GlobalManager.infinite_ingredients:
 		return
 	if ingredients[ingredient] - cost <= 0:
 		spawn_damage_indicator(str(-cost/5.0), global_position, ingredient)
@@ -126,7 +126,7 @@ func sum(arr: Array):
 	return total
 	
 func gain_ingredients(ingredient: GlobalManager.IngredientType, amount: int):
-	if is_dead:
+	if is_dead or GlobalManager.infinite_ingredients:
 		return
 	var total_ingredients = sum(ingredients)
 	if total_ingredients + amount >= 100:
