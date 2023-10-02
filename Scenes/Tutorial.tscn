@@ -18,7 +18,7 @@
 [ext_resource type="Script" path="res://Scripts/CameraController.gd" id="14_pdgxh"]
 [ext_resource type="PackedScene" uid="uid://bt0m4c8jfdq7a" path="res://Scenes/Doors/CreamDoorFlip.tscn" id="15_3u1bo"]
 [ext_resource type="PackedScene" uid="uid://bvibyd42fxp4l" path="res://Scenes/Player.tscn" id="15_ii6tu"]
-[ext_resource type="PackedScene" uid="uid://o05lff2sb8dv" path="res://Scenes/LevelFinish.tscn" id="16_73jpo"]
+[ext_resource type="PackedScene" uid="uid://o05lff2sb8dv" path="res://Scenes/FinishLine.tscn" id="16_73jpo"]
 [ext_resource type="PackedScene" uid="uid://clry7ydaoc2vg" path="res://Scenes/Doors/SpiceDoorFlip.tscn" id="16_p5v6k"]
 [ext_resource type="PackedScene" uid="uid://drnmc3d3oe2uo" path="res://Scenes/Monsters/SpiceMonster.tscn" id="21_txwwe"]
 [ext_resource type="PackedScene" uid="uid://bn4rqxygnm7gc" path="res://Scenes/Monsters/CreamMonster.tscn" id="22_wd1s6"]
@@ -168,12 +168,6 @@ script = ExtResource("14_pdgxh")
 position = Vector2(449, -429)
 collision_mask = 29
 
-[node name="LevelFinish" parent="." instance=ExtResource("16_73jpo")]
-position = Vector2(-529, -912)
-rotation = -0.453786
-scale = Vector2(8.105, 8.105)
-next_state = 1
-
 [node name="SpiceMonster" parent="." instance=ExtResource("21_txwwe")]
 position = Vector2(224, -561)
 can_move = false
@@ -191,3 +185,9 @@ is_invincible = true
 
 [node name="MeatMonster2" parent="." instance=ExtResource("23_6hlu8")]
 position = Vector2(-299, -758)
+
+[node name="FinishLine" parent="." instance=ExtResource("16_73jpo")]
+position = Vector2(-511, -907)
+rotation = -0.453786
+scale = Vector2(7.61, 7.61)
+next_state = 2

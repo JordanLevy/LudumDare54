@@ -38,10 +38,14 @@ func spawn_damage_indicator(text: String, pos: Vector2, type: GlobalManager.Ingr
 
 func take_damage(damage_type: GlobalManager.IngredientType, amount: int):
 	var text = "{amount}"
+	var is_crit = false
 	if GlobalManager.is_super_effective(damage_type, ingredient_type):
 		amount *= 2
 		text = "*{amount}*"
-	
+		is_crit = true
+	GlobalManager.play_sound_effect(GlobalManager.SoundType.HIT_MONSTER, damage_type, self)
+	if is_crit:
+		GlobalManager.play_sound_effect(GlobalManager.SoundType.CRIT, damage_type, self)
 	spawn_damage_indicator(text.format({"amount": -amount/5.0}), global_position, damage_type)
 	if is_invincible:
 		return

@@ -16,6 +16,7 @@ func _ready():
 func open():
 	if is_open:
 		return
+	GlobalManager.play_sound_effect(GlobalManager.SoundType.OPEN_DOOR, GlobalManager.IngredientType.CREAM, self)
 	is_open = true
 	animated_sprite.speed_scale = 1
 	animated_sprite.animation = "open"
@@ -25,6 +26,7 @@ func open():
 func close():
 	if !is_open:
 		return
+	GlobalManager.play_sound_effect(GlobalManager.SoundType.OPEN_DOOR, GlobalManager.IngredientType.CREAM, self)
 	is_open = false
 	animated_sprite.speed_scale = -1
 	animated_sprite.animation = "open"

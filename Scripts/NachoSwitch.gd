@@ -25,5 +25,6 @@ func _on_area_2d_body_entered(body):
 	print(body.position)
 	if body is Projectile:
 		change_topping(body.ingredient_type)
+		GlobalManager.play_sound_effect(GlobalManager.SoundType.HIT_NACHO, body.ingredient_type, self)
 		print("b", body)
 		body.on_hit()

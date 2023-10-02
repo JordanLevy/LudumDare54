@@ -148,6 +148,7 @@ func gain_ingredients(ingredient: GlobalManager.IngredientType, amount: int):
 	ingredients_changed.emit(ingredients)
 		
 func shoot(ingredient: GlobalManager.IngredientType):
+	GlobalManager.play_sound_effect(GlobalManager.SoundType.SHOOT, ingredient, self)
 	var instance = projectile_prefabs[ingredient].instantiate()
 	instance.target = mouse_position
 	instance.global_position = global_position
@@ -190,6 +191,7 @@ func _on_hurtbox_body_entered(body):
 		take_damage(GlobalManager.get_strong_matchup(body.ingredient_type), body.damage)
 		await GlobalManager.hitlag(0.1, 0.4)
 		take_knockback(kbv, 4)
+		GlobalManager.play_sound_effect(GlobalManager.SoundType.HIT_PLAYER, body.ingredient_type, self)
 
 
 func _on_death_timer_timeout():

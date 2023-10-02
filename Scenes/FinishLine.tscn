@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fb1rs"]
 size = Vector2(18, 18)
 
-[node name="LevelFinish" type="Area2D"]
+[node name="FinishLine" type="Area2D"]
 script = ExtResource("1_o8d8j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

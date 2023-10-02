@@ -19,4 +19,4 @@ func _on_menu_button_pressed():
 	if GlobalManager.is_menu_enabled:
 		GlobalManager.set_game_state(GlobalManager.GameState.MENU)
 	else:
-		GlobalManager.set_game_state(GlobalManager.GameState.PLAY)
+		GlobalManager.set_game_state(GlobalManager.GameState.LEVEL1)

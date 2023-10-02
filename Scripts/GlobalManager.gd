@@ -10,8 +10,8 @@ enum IngredientType {
 
 enum GameState {
 	MENU = 0,
-	PLAY = 1,
-	TUTORIAL = 2,
+	TUTORIAL = 1,
+	LEVEL1 = 2,
 	WIN = 3,
 	LOSE = 4,
 	SETTINGS = 5
@@ -23,6 +23,48 @@ enum LossMethod {
 	OVERFILL = 2
 }
 
+enum SoundType {
+	SHOOT = 0,
+	HIT_MONSTER = 1,
+	HIT_PLAYER = 2,
+	CRIT = 3,
+	HIT_NACHO = 4,
+	OPEN_DOOR = 5
+}
+
+var sound_effects: Dictionary = {
+	SoundType.SHOOT: {
+		IngredientType.CREAM: preload("res://Sounds/Hiss.mp3"),
+		IngredientType.SPICE: preload("res://Sounds/Hiss.mp3"),
+		IngredientType.MEAT: preload("res://Sounds/Hiss.mp3")
+	},
+	SoundType.HIT_MONSTER: {
+		IngredientType.CREAM: preload("res://Sounds/Clap.mp3"),
+		IngredientType.SPICE: preload("res://Sounds/Clap.mp3"),
+		IngredientType.MEAT: preload("res://Sounds/Clap.mp3"),
+	},
+	SoundType.CRIT: {
+		IngredientType.CREAM: preload("res://Sounds/Crit.mp3"),
+		IngredientType.SPICE: preload("res://Sounds/Crit.mp3"),
+		IngredientType.MEAT: preload("res://Sounds/Crit.mp3"),
+	},
+	SoundType.HIT_PLAYER: {
+		IngredientType.CREAM: preload("res://Sounds/Clap.mp3"),
+		IngredientType.SPICE: preload("res://Sounds/Clap.mp3"),
+		IngredientType.MEAT: preload("res://Sounds/Clap.mp3"),
+	},
+	SoundType.HIT_NACHO: {
+		IngredientType.CREAM: preload("res://Sounds/ClapSoft.mp3"),
+		IngredientType.SPICE: preload("res://Sounds/ClapSoft.mp3"),
+		IngredientType.MEAT: preload("res://Sounds/ClapSoft.mp3"),
+	},
+	SoundType.OPEN_DOOR: {
+		IngredientType.CREAM: preload("res://Sounds/Whirr.mp3"),
+		IngredientType.SPICE: preload("res://Sounds/Whirr.mp3"),
+		IngredientType.MEAT: preload("res://Sounds/Whirr.mp3"),
+	}
+}
+
 signal nacho_activated
 signal game_state_changed
 signal monster_killed
@@ -32,6 +74,7 @@ signal toggle_mute_music
 var is_menu_enabled = true
 var nacho_count : Array[int] = [0, 0, 0, 0, 0]
 var game_state : GameState = GameState.MENU
+var checkpoint: String
 var loss_method: LossMethod = LossMethod.NONE
 var loss_ingredient: IngredientType = IngredientType.PLAIN
 const damage_indicator = preload("res://Scenes/UI/DamageIndicator.tscn")
@@ -40,6 +83,13 @@ var strong_matchups = [IngredientType.SPICE, IngredientType.MEAT, IngredientType
 var weak_matchups = [IngredientType.MEAT, IngredientType.CREAM, IngredientType.SPICE, null, null]
 
 var infinite_ingredients = false
+
+
+func play_sound_effect(sound_type: SoundType, ingredient: IngredientType, node: Node2D):
+	var sound_player = AudioStreamPlayer2D.new()
+	sound_player.stream = sound_effects[sound_type][ingredient]
+	node.add_child(sound_player)
+	sound_player.play()
 
 func hitlag(time_scale: float, duration: float):
 	Engine.time_scale = time_scale
@@ -73,15 +123,17 @@ func set_game_state(state: GameState):
 	if state == GameState.MENU:
 		get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 	elif state == GameState.TUTORIAL:
+		checkpoint = "res://Scenes/Tutorial.tscn"
 		loss_method = LossMethod.NONE
 		loss_ingredient = IngredientType.PLAIN
 		infinite_ingredients = true
-		get_tree().change_scene_to_file("res://Scenes/Tutorial.tscn")
-	elif state == GameState.PLAY:
+		get_tree().change_scene_to_file(checkpoint)
+	elif state == GameState.LEVEL1:
+		checkpoint = "res://Scenes/Level1.tscn"
 		loss_method = LossMethod.NONE
 		loss_ingredient = IngredientType.PLAIN
 		infinite_ingredients = false
-		get_tree().change_scene_to_file("res://Scenes/Game.tscn")
+		get_tree().change_scene_to_file(checkpoint)
 	elif state == GameState.WIN:
 		nacho_count = [0, 0, 0, 0, 0]
 		get_tree().change_scene_to_file("res://Scenes/WinScreen.tscn")
