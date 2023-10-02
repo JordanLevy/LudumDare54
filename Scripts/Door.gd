@@ -4,7 +4,7 @@ class_name Door
 
 var animated_sprite: AnimatedSprite2D
 var collision_shape: CollisionShape2D
-var id: int
+@export var criteria: Array[int] = [1, 0, 0, 0]
 var is_open: bool = false
 
 func _ready():
@@ -37,8 +37,14 @@ func enable_collision():
 func disable_collision():
 	collision_shape.disabled = true
 	
+func meets_criteria():
+	for i in range(criteria.size()):
+		if GlobalManager.nacho_count[i] < criteria[i]:
+			return false
+	return true
+	
 func nacho_switch_activated():
-	if GlobalManager.nacho_count[id] >= 1:
+	if meets_criteria():
 		open()
 	else:
 		close()
