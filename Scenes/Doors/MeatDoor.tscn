@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://4oybrylqfuvv"]
 
-[ext_resource type="Script" path="res://Scripts/GuacDoor.gd" id="1_jpxcg"]
+[ext_resource type="Script" path="res://Scripts/MeatDoor.gd" id="1_4687l"]
 [ext_resource type="Texture2D" uid="uid://dg7niwcyytg8l" path="res://Assets/Door.png" id="2_t5n8o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_luhli"]
@@ -91,12 +91,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86jyl"]
 size = Vector2(31.3034, 1.81261)
 
-[node name="GuacDoor" type="CharacterBody2D"]
+[node name="MeatDoor" type="CharacterBody2D"]
 y_sort_enabled = true
 position = Vector2(0, -16)
 collision_layer = 16
 collision_mask = 0
-script = ExtResource("1_jpxcg")
+script = ExtResource("1_4687l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-18, 18)

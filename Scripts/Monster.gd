@@ -53,10 +53,11 @@ func despawn():
 func _on_hurtbox_body_entered(body):
 	if body is Projectile:
 		var kbv = body.velocity.normalized()
+		var bk = body.knockback
 		take_damage(body.ingredient_type, body.damage)
 		if ingredient_type == GlobalManager.IngredientType.MEAT:
 			await GlobalManager.hitlag(0.1, 0.2)
-		take_knockback(kbv, body.knockback)
+		take_knockback(kbv, bk)
 		body.on_hit()
 
 func _physics_process(delta):
