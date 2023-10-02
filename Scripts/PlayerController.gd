@@ -107,6 +107,7 @@ func pay_ingredients(ingredient: GlobalManager.IngredientType, cost: int):
 	if is_dead:
 		return
 	if ingredients[ingredient] - cost <= 0:
+		spawn_damage_indicator(str(-cost/5.0), global_position, ingredient)
 		ingredients[ingredient] = 0
 		emit_signal("ingredients_changed", ingredients)
 		GlobalManager.loss_method = GlobalManager.LossMethod.UNDERFILL
@@ -114,6 +115,7 @@ func pay_ingredients(ingredient: GlobalManager.IngredientType, cost: int):
 		death_timer.start()
 		is_dead = true
 		return
+	spawn_damage_indicator(str(-cost/5.0), global_position, ingredient)
 	ingredients[ingredient] -= cost
 	emit_signal("ingredients_changed", ingredients)
 	
@@ -151,6 +153,16 @@ func start_dash():
 	else:
 		dash_velocity = (mouse_position - global_position).normalized() * dash_speed
 
+func spawn_effect(effect: PackedScene, pos: Vector2):
+	var instance = effect.instantiate()
+	add_child(instance)
+	instance.global_position = pos
+	return instance
+	
+func spawn_damage_indicator(text: String, pos: Vector2, type: GlobalManager.IngredientType):
+	var indicator = spawn_effect(GlobalManager.damage_indicator, pos)
+	indicator.label.text = str(text)
+	indicator.label.label_settings.set_font_color(GlobalManager.ingredient_type_to_color(type))
 
 func take_damage(ingredient: GlobalManager.IngredientType, damage: int):
 	if not dash_timer.is_stopped():
@@ -165,9 +177,10 @@ func _on_hurtbox_body_entered(body):
 		return
 	if body is Monster:
 		velocity = Vector2.ZERO
-		take_damage(body.ingredient_type, body.damage)
+		var kbv = (global_position - body.global_position).normalized()
+		take_damage(GlobalManager.get_strong_matchup(body.ingredient_type), body.damage)
 		await GlobalManager.hitlag(0.1, 0.4)
-		take_knockback((global_position - body.global_position).normalized(), 4)
+		take_knockback(kbv, 4)
 
 
 func _on_death_timer_timeout():

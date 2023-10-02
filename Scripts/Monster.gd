@@ -21,15 +21,29 @@ func _ready():
 	nav = get_node("NavigationAgent2D")
 	sprite = get_node("Sprite")
 
+func spawn_effect(effect: PackedScene, pos: Vector2):
+	var instance = effect.instantiate()
+	add_child(instance)
+	instance.global_position = pos
+	return instance
+	
+func spawn_damage_indicator(text: String, pos: Vector2, type: GlobalManager.IngredientType):
+	var indicator = spawn_effect(GlobalManager.damage_indicator, pos)
+	indicator.label.text = str(text)
+	indicator.label.label_settings.set_font_color(GlobalManager.ingredient_type_to_color(type))
+
 func take_damage(damage_type: GlobalManager.IngredientType, amount: int):
+	var text = "{amount}"
 	if GlobalManager.is_super_effective(damage_type, ingredient_type):
 		amount *= 2.0
+		text = "*{amount}*"
+	
+	spawn_damage_indicator(text.format({"amount": -amount/5.0}), global_position, damage_type)
 	if health - amount <= 0:
 		despawn()
 	health -= amount
 	
 func take_knockback(direction: Vector2, amount: float):
-	print(direction * amount * knockback_coefficient)
 	move_and_collide(direction * amount * knockback_coefficient)
 	
 func despawn():
@@ -38,10 +52,11 @@ func despawn():
 	
 func _on_hurtbox_body_entered(body):
 	if body is Projectile:
+		var kbv = body.velocity.normalized()
 		take_damage(body.ingredient_type, body.damage)
 		if ingredient_type == GlobalManager.IngredientType.MEAT:
 			await GlobalManager.hitlag(0.1, 0.2)
-		take_knockback(body.velocity.normalized(), body.knockback)
+		take_knockback(kbv, body.knockback)
 		body.on_hit()
 
 func _physics_process(delta):

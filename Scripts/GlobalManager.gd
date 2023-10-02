@@ -32,23 +32,35 @@ var nacho_count : Array[int] = [0, 0, 0, 0, 0]
 var game_state : GameState = GameState.PLAY
 var loss_method: LossMethod = LossMethod.NONE
 var loss_ingredient: IngredientType = IngredientType.PLAIN
+const damage_indicator = preload("res://Scenes/UI/DamageIndicator.tscn")
+
+var strong_matchups = [IngredientType.SPICE, IngredientType.MEAT, IngredientType.CREAM, null, null]
+var weak_matchups = [IngredientType.MEAT, IngredientType.CREAM, IngredientType.SPICE, null, null]
 
 func hitlag(time_scale: float, duration: float):
 	Engine.time_scale = time_scale
 	await(get_tree().create_timer(duration * time_scale).timeout)
 	Engine.time_scale = 1.0
+	
 
 func is_super_effective(attack: IngredientType, target: IngredientType):
-	# cream extinguishes spice
-	if attack == IngredientType.CREAM:
-		return target == IngredientType.SPICE
-	# spice burns meat
-	if attack == IngredientType.SPICE:
-		return target == IngredientType.MEAT
-	# meat overpowers cream
-	if attack == IngredientType.MEAT:
-		return target == IngredientType.CREAM
-	return false
+	return get_strong_matchup(attack) == target
+	
+func get_strong_matchup(attack: IngredientType):
+	return strong_matchups[attack]
+		
+func get_weak_matchup(attack: IngredientType):
+	return weak_matchups[attack]
+	
+func ingredient_type_to_color(type: IngredientType):
+	if type == IngredientType.CREAM:
+		return Color(255/255.0, 254/255.0, 236/255.0)
+	if type == IngredientType.SPICE:
+		return Color(232/255.0, 9/255.0, 9/255.0)
+	if type == IngredientType.MEAT:
+		return Color(99/255.0, 58/255.0, 47/255.0)
+	if type == IngredientType.GUAC:
+		return Color(77/255.0, 160/255.0, 20/255.0)
 
 func set_game_state(state: GameState):
 	if state == game_state:
