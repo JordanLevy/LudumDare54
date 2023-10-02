@@ -129,12 +129,14 @@ func set_game_state(state: GameState):
 	if state == GameState.MENU:
 		get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 	elif state == GameState.TUTORIAL:
+		nacho_count = [0, 0, 0, 0, 0]
 		checkpoint = "res://Scenes/Tutorial.tscn"
 		loss_method = LossMethod.NONE
 		loss_ingredient = IngredientType.PLAIN
 		infinite_ingredients = true
 		get_tree().change_scene_to_file(checkpoint)
 	elif state == GameState.LEVEL1:
+		nacho_count = [0, 0, 0, 0, 0]
 		checkpoint = "res://Scenes/Level1.tscn"
 		loss_method = LossMethod.NONE
 		loss_ingredient = IngredientType.PLAIN

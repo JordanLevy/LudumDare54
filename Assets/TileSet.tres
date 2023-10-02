@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=16 format=3 uid="uid://bfjjiqhq6ixkv"]
+[gd_resource type="TileSet" load_steps=17 format=3 uid="uid://bfjjiqhq6ixkv"]
 
 [ext_resource type="PackedScene" uid="uid://c55mpc0awlaxg" path="res://Scenes/NachoSwitch.tscn" id="1_h8oc2"]
+[ext_resource type="PackedScene" uid="uid://ccbx0adjbd0ex" path="res://Scenes/Doors/PlayerDoor2Flip.tscn" id="1_o3qpv"]
 [ext_resource type="PackedScene" uid="uid://dirm853ccicvy" path="res://Scenes/Doors/CreamDoor.tscn" id="2_wjprs"]
 [ext_resource type="PackedScene" uid="uid://bt0m4c8jfdq7a" path="res://Scenes/Doors/CreamDoorFlip.tscn" id="3_vr284"]
 [ext_resource type="PackedScene" uid="uid://bucsuodflwx5r" path="res://Scenes/Doors/SpiceDoor.tscn" id="4_p5mu6"]
@@ -13,6 +14,7 @@
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_nimmk"]
 resource_name = "Doors"
+scenes/1/scene = ExtResource("1_o3qpv")
 scenes/3/scene = ExtResource("1_h8oc2")
 scenes/4/scene = ExtResource("2_wjprs")
 scenes/5/scene = ExtResource("4_p5mu6")

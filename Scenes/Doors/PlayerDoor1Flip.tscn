@@ -9,7 +9,7 @@ y_sort_enabled = true
 [node name="Door" parent="." instance=ExtResource("1_6xjk3")]
 scale = Vector2(-1, 1)
 criteria_type = 1
-criteria = Array[int]([15, 15, 15, 5])
+criteria = Array[int]([20, 20, 20, 5])
 
 [node name="IngredientsBar" parent="." instance=ExtResource("2_shqxm")]
 offset_left = -70.0
@@ -17,4 +17,4 @@ offset_top = -56.0
 offset_right = -30.0
 offset_bottom = -16.0
 is_door_label = true
-door_label_ingredients = Array[int]([15, 15, 15, 5])
+door_label_ingredients = Array[int]([20, 20, 20, 5])

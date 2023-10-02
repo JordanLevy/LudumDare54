@@ -46,7 +46,7 @@ func _ready():
 	dash_timer = get_node("DashTimer")
 	death_timer = get_node("DeathTimer")
 	endlag_timer = get_node("EndlagTimer")
-	ingredients = [15, 15, 15, 5]
+	ingredients = [20, 20, 20, 5]
 	monster_rewards = [20, 15, 10, 0]
 	GlobalManager.monster_killed.connect(on_monster_killed)
 	emit_signal("ingredients_changed", ingredients)
@@ -137,7 +137,7 @@ func gain_ingredients(ingredient: GlobalManager.IngredientType, amount: int):
 	var total_ingredients = sum(ingredients)
 	spawn_damage_indicator("+" + str(amount/5.0), global_position, ingredient)
 	if total_ingredients + amount >= 100:
-		ingredients[ingredient] += min(amount, 100 - total_ingredients)
+		ingredients[ingredient] += amount
 		ingredients_changed.emit(ingredients)
 		GlobalManager.loss_method = GlobalManager.LossMethod.OVERFILL
 		GlobalManager.loss_ingredient = ingredient
