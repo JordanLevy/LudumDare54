@@ -7,7 +7,7 @@ var player: Player
 
 func _ready():
 	player_offset = Vector2(0, -20)
-	damage = 5
+	damage = 10
 	knockback = 7
 	speed = 1
 	ingredient_type = GlobalManager.IngredientType.CREAM

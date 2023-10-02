@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name Monster
 
 var player: Player
-var health = 10
+var health = 30
 var speed = 30
 var accel = 4
 var damage = 10
@@ -21,7 +21,9 @@ func _ready():
 	nav = get_node("NavigationAgent2D")
 	sprite = get_node("Sprite")
 
-func take_damage(amount: int):
+func take_damage(damage_type: GlobalManager.IngredientType, amount: int):
+	if GlobalManager.is_super_effective(damage_type, ingredient_type):
+		amount *= 2.0
 	if health - amount <= 0:
 		despawn()
 	health -= amount
@@ -36,7 +38,7 @@ func despawn():
 	
 func _on_hurtbox_body_entered(body):
 	if body is Projectile:
-		take_damage(body.damage)
+		take_damage(body.ingredient_type, body.damage)
 		take_knockback(body.velocity.normalized(), body.knockback)
 		body.on_hit()
 

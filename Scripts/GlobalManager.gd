@@ -33,6 +33,18 @@ var game_state : GameState = GameState.PLAY
 var loss_method: LossMethod = LossMethod.NONE
 var loss_ingredient: IngredientType = IngredientType.PLAIN
 
+func is_super_effective(attack: IngredientType, target: IngredientType):
+	# cream extinguishes spice
+	if attack == IngredientType.CREAM:
+		return target == IngredientType.SPICE
+	# spice burns meat
+	if attack == IngredientType.SPICE:
+		return target == IngredientType.MEAT
+	# meat overpowers cream
+	if attack == IngredientType.MEAT:
+		return target == IngredientType.CREAM
+	return false
+
 func set_game_state(state: GameState):
 	if state == game_state:
 		return
