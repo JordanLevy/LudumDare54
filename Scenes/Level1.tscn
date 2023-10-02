@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://60g0forxgg2m"]
+[gd_scene load_steps=14 format=3 uid="uid://60g0forxgg2m"]
 
 [ext_resource type="Script" path="res://Scripts/IngredientsBar.gd" id="1_6i2i2"]
 [ext_resource type="Texture2D" uid="uid://ymkmnhqc73hy" path="res://Assets/IngredientsBar/Under.png" id="2_vkime"]
@@ -10,7 +10,6 @@
 [ext_resource type="TileSet" uid="uid://bfjjiqhq6ixkv" path="res://Assets/TileSet.tres" id="8_b8i68"]
 [ext_resource type="Script" path="res://Scripts/CameraController.gd" id="9_fl85v"]
 [ext_resource type="PackedScene" uid="uid://bvibyd42fxp4l" path="res://Scenes/Player.tscn" id="10_4oidn"]
-[ext_resource type="PackedScene" uid="uid://o05lff2sb8dv" path="res://Scenes/FinishLine.tscn" id="11_5hkf7"]
 [ext_resource type="PackedScene" uid="uid://drnmc3d3oe2uo" path="res://Scenes/Monsters/SpiceMonster.tscn" id="12_wyxqu"]
 [ext_resource type="PackedScene" uid="uid://bn4rqxygnm7gc" path="res://Scenes/Monsters/CreamMonster.tscn" id="13_s377e"]
 [ext_resource type="PackedScene" uid="uid://dlhqnm2bdiyj0" path="res://Scenes/Monsters/MeatMonster.tscn" id="14_jypt7"]
@@ -89,9 +88,6 @@ layer_1/tile_data = PackedInt32Array()
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 script = ExtResource("9_fl85v")
-
-[node name="FinishLine" parent="." instance=ExtResource("11_5hkf7")]
-position = Vector2(448, -167)
 
 [node name="Player" parent="." instance=ExtResource("10_4oidn")]
 position = Vector2(-81, 115)
