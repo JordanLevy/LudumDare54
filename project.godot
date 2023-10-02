@@ -94,3 +94,4 @@ fire_meat={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.52549, 0.552941, 0.537255, 1)

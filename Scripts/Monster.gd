@@ -15,6 +15,8 @@ var flip_threshold = 0.4
 var flip_cooldown = 0.5
 var time_since_last_flip = 0
 var knockback_coefficient = 10
+var is_aggro: bool = false
+var sight_range = 250
 
 func _ready():
 	player = get_tree().get_root().get_node("Node2D/Player")
@@ -61,6 +63,10 @@ func _on_hurtbox_body_entered(body):
 		body.on_hit()
 
 func _physics_process(delta):
+	if (global_position - player.global_position).length() <= sight_range:
+		is_aggro = true
+	if !is_aggro:
+		return
 	time_since_last_flip += delta
 	(await get_tree().process_frame)
 	var direction = Vector3()
