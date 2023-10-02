@@ -11,5 +11,6 @@ scale = Vector2(-1, 1)
 
 [node name="AnimatedSprite2D" parent="Door" index="0"]
 sprite_frames = ExtResource("2_x4krr")
+frame_progress = 1.0
 
 [editable path="Door"]

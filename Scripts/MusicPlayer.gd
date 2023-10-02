@@ -2,7 +2,7 @@ extends AudioStreamPlayer
 
 func _ready():
 	GlobalManager.toggle_mute_music.connect(on_toggle_mute)
-	playing = false
+	playing = true
 
 func on_toggle_mute():
 	playing = !playing

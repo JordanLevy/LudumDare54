@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0odlgal36o2k"]
+[gd_scene load_steps=4 format=3 uid="uid://d0odlgal36o2k"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_13ndn"]
+[ext_resource type="Texture2D" uid="uid://bqka8aa6uiqtf" path="res://Assets/Background.png" id="2_uols0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vb1cf"]
+font_size = 80
 
 [node name="MainMenu" type="CenterContainer"]
 anchors_preset = 15
@@ -10,12 +14,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_13ndn")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_uols0")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Burrito Expert"
+text = "Burrito"
+label_settings = SubResource("LabelSettings_vb1cf")
 horizontal_alignment = 1
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]

@@ -81,6 +81,9 @@ func try_open_player_door():
 		return
 	if meets_player_criteria():
 		open()
+	else:
+		close()
+		GlobalManager.play_sound_effect(GlobalManager.SoundType.DENY_DOOR, GlobalManager.IngredientType.CREAM, self)
 
 func _on_area_2d_body_entered(body):
 	player_in_range = true
@@ -90,3 +93,5 @@ func _on_area_2d_body_entered(body):
 
 func _on_area_2d_body_exited(body):
 	player_in_range = false
+	if criteria_type == CriteriaType.PlayerIngredients:
+		close()

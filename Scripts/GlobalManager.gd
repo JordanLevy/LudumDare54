@@ -29,7 +29,8 @@ enum SoundType {
 	HIT_PLAYER = 2,
 	CRIT = 3,
 	HIT_NACHO = 4,
-	OPEN_DOOR = 5
+	OPEN_DOOR = 5,
+	DENY_DOOR = 6
 }
 
 var sound_effects: Dictionary = {
@@ -62,6 +63,11 @@ var sound_effects: Dictionary = {
 		IngredientType.CREAM: preload("res://Sounds/Whirr.mp3"),
 		IngredientType.SPICE: preload("res://Sounds/Whirr.mp3"),
 		IngredientType.MEAT: preload("res://Sounds/Whirr.mp3"),
+	},
+	SoundType.DENY_DOOR: {
+		IngredientType.CREAM: preload("res://Sounds/Buzz.mp3"),
+		IngredientType.SPICE: preload("res://Sounds/Buzz.mp3"),
+		IngredientType.MEAT: preload("res://Sounds/Buzz.mp3"),
 	}
 }
 
@@ -126,7 +132,7 @@ func set_game_state(state: GameState):
 		checkpoint = "res://Scenes/Tutorial.tscn"
 		loss_method = LossMethod.NONE
 		loss_ingredient = IngredientType.PLAIN
-		infinite_ingredients = false
+		infinite_ingredients = true
 		get_tree().change_scene_to_file(checkpoint)
 	elif state == GameState.LEVEL1:
 		checkpoint = "res://Scenes/Level1.tscn"

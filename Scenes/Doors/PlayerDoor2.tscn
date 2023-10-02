@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsx670p8gxyl5"]
+
+[ext_resource type="PackedScene" uid="uid://d4l0jkj7yd0li" path="res://Scenes/Doors/Door.tscn" id="1_d1c71"]
+[ext_resource type="PackedScene" uid="uid://57peuvssmvoh" path="res://Scenes/IngredientsBar.tscn" id="2_5d1ws"]
+
+[node name="PlayerDoor1" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Door" parent="." instance=ExtResource("1_d1c71")]
+criteria_type = 1
+criteria = Array[int]([30, 30, 10, 5])
+
+[node name="IngredientsBar" parent="." instance=ExtResource("2_5d1ws")]
+offset_left = -70.0
+offset_top = -56.0
+offset_right = -30.0
+offset_bottom = -16.0
+is_door_label = true
+door_label_ingredients = Array[int]([30, 30, 10, 5])
