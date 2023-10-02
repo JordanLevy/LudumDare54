@@ -8,30 +8,30 @@
 [ext_resource type="Texture2D" uid="uid://b10ly5ir2vidv" path="res://Assets/IngredientsBar/Guac.png" id="6_ecgd4"]
 [ext_resource type="Texture2D" uid="uid://bn2u6l6jtfrg3" path="res://Assets/IngredientsBar/Over.png" id="7_wm72h"]
 [ext_resource type="PackedScene" uid="uid://c55mpc0awlaxg" path="res://Scenes/NachoSwitch.tscn" id="8_0nl3f"]
-[ext_resource type="PackedScene" uid="uid://b6xwg0oi07avv" path="res://Scenes/Doors/MeatDoorFlip.tscn" id="8_a6sd6"]
+[ext_resource type="PackedScene" uid="uid://slughw6gxek1" path="res://Scenes/Doors/MeatDoorFlip.tscn" id="8_a6sd6"]
 [ext_resource type="PackedScene" uid="uid://dirm853ccicvy" path="res://Scenes/Doors/CreamDoor.tscn" id="9_8ve6h"]
-[ext_resource type="PackedScene" uid="uid://bwsgkk66r5obh" path="res://Scenes/Doors/GuacDoorFlip.tscn" id="9_pu6wt"]
-[ext_resource type="PackedScene" uid="uid://cf3ontpxqikwa" path="res://Scenes/Doors/SpiceDoor.tscn" id="10_0f625"]
-[ext_resource type="PackedScene" uid="uid://4oybrylqfuvv" path="res://Scenes/Doors/MeatDoor.tscn" id="11_s8yhy"]
-[ext_resource type="PackedScene" uid="uid://dm4twlmm6vaex" path="res://Scenes/Doors/GuacDoor.tscn" id="12_3exu7"]
+[ext_resource type="PackedScene" uid="uid://dnwe11611r3cq" path="res://Scenes/Doors/GuacDoorFlip.tscn" id="9_pu6wt"]
+[ext_resource type="PackedScene" uid="uid://bucsuodflwx5r" path="res://Scenes/Doors/SpiceDoor.tscn" id="10_0f625"]
+[ext_resource type="PackedScene" uid="uid://ch32dhmsoonhg" path="res://Scenes/Doors/MeatDoor.tscn" id="11_s8yhy"]
+[ext_resource type="PackedScene" uid="uid://b16psejsqnd8e" path="res://Scenes/Doors/GuacDoor.tscn" id="12_3exu7"]
 [ext_resource type="Texture2D" uid="uid://bnni7u7ut862f" path="res://Assets/Tiles.png" id="13_nnmw2"]
 [ext_resource type="Script" path="res://Scripts/CameraController.gd" id="14_pdgxh"]
-[ext_resource type="PackedScene" uid="uid://cujj2s4fw6s3j" path="res://Scenes/Doors/CreamDoorFlip.tscn" id="15_3u1bo"]
+[ext_resource type="PackedScene" uid="uid://bt0m4c8jfdq7a" path="res://Scenes/Doors/CreamDoorFlip.tscn" id="15_3u1bo"]
 [ext_resource type="PackedScene" uid="uid://bvibyd42fxp4l" path="res://Scenes/Player.tscn" id="15_ii6tu"]
 [ext_resource type="PackedScene" uid="uid://o05lff2sb8dv" path="res://Scenes/LevelFinish.tscn" id="16_73jpo"]
-[ext_resource type="PackedScene" uid="uid://dx3ygelh018yr" path="res://Scenes/Doors/SpiceDoorFlip.tscn" id="16_p5v6k"]
+[ext_resource type="PackedScene" uid="uid://clry7ydaoc2vg" path="res://Scenes/Doors/SpiceDoorFlip.tscn" id="16_p5v6k"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_nimmk"]
 resource_name = "Doors"
-scenes/3/scene = ExtResource("8_0nl3f")
-scenes/4/scene = ExtResource("9_8ve6h")
-scenes/5/scene = ExtResource("10_0f625")
+scenes/1/scene = ExtResource("8_0nl3f")
+scenes/2/scene = ExtResource("9_8ve6h")
+scenes/3/scene = ExtResource("15_3u1bo")
+scenes/4/scene = ExtResource("10_0f625")
+scenes/5/scene = ExtResource("16_p5v6k")
 scenes/6/scene = ExtResource("11_s8yhy")
-scenes/7/scene = ExtResource("12_3exu7")
-scenes/8/scene = ExtResource("15_3u1bo")
-scenes/9/scene = ExtResource("16_p5v6k")
-scenes/10/scene = ExtResource("8_a6sd6")
-scenes/11/scene = ExtResource("9_pu6wt")
+scenes/7/scene = ExtResource("8_a6sd6")
+scenes/8/scene = ExtResource("12_3exu7")
+scenes/9/scene = ExtResource("9_pu6wt")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ivf7f"]
 vertices = PackedVector2Array(32, 0, 0, 16, -32, 0, 0, -16)
@@ -155,7 +155,7 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = true
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(-131071, 0, 196608, -655345, 0, 262144, -327673, 0, 327680, -589814, 0, 196608, -655337, 0, 196608, -786416, 0, 655360)
+layer_1/tile_data = PackedInt32Array(-131071, 0, 65536, -262142, 0, 131072, -262141, 0, 262144, -196604, 0, 393216, -196603, 0, 524288, -65541, 0, 196608, -65540, 0, 327680, -131075, 0, 458752, -131074, 0, 589824, -327673, 0, 262144, -589814, 0, 65536, -655345, 0, 131072, -655337, 0, 65536, -786416, 0, 458752)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)

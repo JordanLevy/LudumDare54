@@ -10,6 +10,7 @@ func _ready():
 	damage = 10
 	knockback = 7
 	speed = 1
+	endlag = 1.2
 	ingredient_type = GlobalManager.IngredientType.CREAM
 	player = get_tree().get_root().get_node("Node2D/Player")
 	position = player.position + player_offset

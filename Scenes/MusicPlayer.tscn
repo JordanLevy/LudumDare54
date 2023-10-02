@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://o1rlesgm7ng7"]
+
+[ext_resource type="AudioStream" uid="uid://jmy011d7ptmk" path="res://Sounds/Burrito Music.wav" id="1_qu7ec"]
+[ext_resource type="Script" path="res://Scripts/MusicPlayer.gd" id="2_hn5sm"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_qu7ec")
+autoplay = true
+script = ExtResource("2_hn5sm")

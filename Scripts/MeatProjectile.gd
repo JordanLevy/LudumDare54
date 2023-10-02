@@ -9,6 +9,7 @@ func _ready():
 	damage = 15
 	knockback = -5
 	speed = 40
+	endlag = 0.5
 	ingredient_type = GlobalManager.IngredientType.MEAT
 	player = get_tree().get_root().get_node("Node2D/Player")
 	velocity = player.velocity.normalized()
@@ -17,7 +18,7 @@ func _ready():
 func on_hit():
 	pass
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	move_and_collide(player.global_position - position + player_offset)
 
 func _on_despawn_timer_timeout():

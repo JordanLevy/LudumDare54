@@ -39,7 +39,7 @@ radius = 8.0
 [node name="SpiceProjectile" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 32
-collision_mask = 4
+collision_mask = 20
 script = ExtResource("1_5uj3p")
 
 [node name="Particle" type="GPUParticles2D" parent="."]

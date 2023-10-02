@@ -1,0 +1,77 @@
+[gd_resource type="TileSet" load_steps=16 format=3 uid="uid://bfjjiqhq6ixkv"]
+
+[ext_resource type="PackedScene" uid="uid://c55mpc0awlaxg" path="res://Scenes/NachoSwitch.tscn" id="1_h8oc2"]
+[ext_resource type="PackedScene" uid="uid://dirm853ccicvy" path="res://Scenes/Doors/CreamDoor.tscn" id="2_wjprs"]
+[ext_resource type="PackedScene" uid="uid://bt0m4c8jfdq7a" path="res://Scenes/Doors/CreamDoorFlip.tscn" id="3_vr284"]
+[ext_resource type="PackedScene" uid="uid://bucsuodflwx5r" path="res://Scenes/Doors/SpiceDoor.tscn" id="4_p5mu6"]
+[ext_resource type="PackedScene" uid="uid://clry7ydaoc2vg" path="res://Scenes/Doors/SpiceDoorFlip.tscn" id="5_lnnp4"]
+[ext_resource type="PackedScene" uid="uid://ch32dhmsoonhg" path="res://Scenes/Doors/MeatDoor.tscn" id="6_45uog"]
+[ext_resource type="PackedScene" uid="uid://slughw6gxek1" path="res://Scenes/Doors/MeatDoorFlip.tscn" id="7_u4cwt"]
+[ext_resource type="PackedScene" uid="uid://b16psejsqnd8e" path="res://Scenes/Doors/GuacDoor.tscn" id="8_w5evr"]
+[ext_resource type="PackedScene" uid="uid://dnwe11611r3cq" path="res://Scenes/Doors/GuacDoorFlip.tscn" id="9_th10k"]
+[ext_resource type="Texture2D" uid="uid://bnni7u7ut862f" path="res://Assets/Tiles.png" id="10_sbenu"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_nimmk"]
+resource_name = "Doors"
+scenes/3/scene = ExtResource("1_h8oc2")
+scenes/4/scene = ExtResource("2_wjprs")
+scenes/5/scene = ExtResource("4_p5mu6")
+scenes/6/scene = ExtResource("6_45uog")
+scenes/7/scene = ExtResource("8_w5evr")
+scenes/8/scene = ExtResource("3_vr284")
+scenes/9/scene = ExtResource("5_lnnp4")
+scenes/10/scene = ExtResource("7_u4cwt")
+scenes/11/scene = ExtResource("9_th10k")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ivf7f"]
+vertices = PackedVector2Array(32, 0, 0, 16, -32, 0, 0, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, -16, -32, 0, 0, 16, 32, 0)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_je8t3"]
+vertices = PackedVector2Array(32, 0, 0, 16, -32, 0, 0, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, -16, -32, 0, 0, 16, 32, 0)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_froq4"]
+vertices = PackedVector2Array(32, 0, 0, 16, -32, 0, 0, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, -16, -32, 0, 0, 16, 32, 0)])
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7bdi5"]
+texture = ExtResource("10_sbenu")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 16)
+0:0/0/y_sort_origin = -100
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ivf7f")
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, 16)
+1:0/0/y_sort_origin = -100
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_je8t3")
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, 16)
+2:0/0/y_sort_origin = -100
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_froq4")
+4:0/0 = 0
+4:0/0/texture_origin = Vector2i(0, 21)
+4:0/0/y_sort_origin = 8
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -20, -32, -4, 0, 12, 32, -4)
+
+[resource]
+tile_shape = 1
+tile_offset_axis = 1
+tile_size = Vector2i(64, 32)
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 951
+navigation_layer_0/layers = 1
+sources/2 = SubResource("TileSetAtlasSource_7bdi5")
+sources/0 = SubResource("TileSetScenesCollectionSource_nimmk")

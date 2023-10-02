@@ -37,12 +37,15 @@ var dash_timer: Timer
 var death_timer: Timer
 var is_dead = false
 
+var endlag_timer: Timer
+
 var knockback_coefficient = 10
 
 func _ready():
 	sprite = get_node("Sprite")
 	dash_timer = get_node("DashTimer")
 	death_timer = get_node("DeathTimer")
+	endlag_timer = get_node("EndlagTimer")
 	ingredients = [15, 15, 15, 5]
 	monster_rewards = [20, 15, 10, 0]
 	GlobalManager.monster_killed.connect(on_monster_killed)
@@ -61,9 +64,9 @@ func get_input():
 		input = input.normalized()
 	else:
 		input = Vector2.ZERO
-	fire_cream = Input.is_action_just_pressed("fire_cream")
-	fire_spice = Input.is_action_just_pressed("fire_spice")
-	fire_meat = Input.is_action_just_pressed("fire_meat")
+	fire_cream = Input.is_action_pressed("fire_cream")
+	fire_spice = Input.is_action_pressed("fire_spice")
+	fire_meat = Input.is_action_pressed("fire_meat")
 	
 
 func player_movement(delta):
@@ -80,16 +83,17 @@ func player_movement(delta):
 		velocity.x = clamp(velocity.x, -max_speed, max_speed)
 		velocity.y = clamp(velocity.y, -max_speed/2.0, max_speed/2.0)
 	
-	if fire_cream:
-		pay_ingredients(GlobalManager.IngredientType.CREAM, projectile_cost)
-		shoot(GlobalManager.IngredientType.CREAM)
-	elif fire_spice:
-		pay_ingredients(GlobalManager.IngredientType.SPICE, projectile_cost)
-		shoot(GlobalManager.IngredientType.SPICE)
-	elif fire_meat:
-		pay_ingredients(GlobalManager.IngredientType.MEAT, projectile_cost)
-		shoot(GlobalManager.IngredientType.MEAT)
-		start_dash()
+	if endlag_timer.is_stopped():
+		if fire_cream:
+			pay_ingredients(GlobalManager.IngredientType.CREAM, projectile_cost)
+			shoot(GlobalManager.IngredientType.CREAM)
+		elif fire_spice:
+			pay_ingredients(GlobalManager.IngredientType.SPICE, projectile_cost)
+			shoot(GlobalManager.IngredientType.SPICE)
+		elif fire_meat:
+			pay_ingredients(GlobalManager.IngredientType.MEAT, projectile_cost)
+			shoot(GlobalManager.IngredientType.MEAT)
+			start_dash()
 		
 	if not dash_timer.is_stopped():
 		velocity = dash_velocity * delta
@@ -145,6 +149,8 @@ func shoot(ingredient: GlobalManager.IngredientType):
 	instance.target = mouse_position
 	instance.global_position = global_position
 	get_parent().add_child(instance)
+	endlag_timer.wait_time = instance.endlag
+	endlag_timer.start()
 	
 func start_dash():
 	dash_timer.start()

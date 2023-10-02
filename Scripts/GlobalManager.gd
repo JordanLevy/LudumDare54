@@ -26,6 +26,7 @@ enum LossMethod {
 signal nacho_activated
 signal game_state_changed
 signal monster_killed
+signal toggle_mute_music
 
 
 var is_menu_enabled = true

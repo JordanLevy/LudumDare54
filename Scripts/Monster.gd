@@ -35,7 +35,7 @@ func spawn_damage_indicator(text: String, pos: Vector2, type: GlobalManager.Ingr
 func take_damage(damage_type: GlobalManager.IngredientType, amount: int):
 	var text = "{amount}"
 	if GlobalManager.is_super_effective(damage_type, ingredient_type):
-		amount *= 2.0
+		amount *= 2
 		text = "*{amount}*"
 	
 	spawn_damage_indicator(text.format({"amount": -amount/5.0}), global_position, damage_type)

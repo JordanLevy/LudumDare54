@@ -9,6 +9,7 @@ func _ready():
 	damage = 5
 	knockback = 2
 	speed = 150
+	endlag = 0.3
 	ingredient_type = GlobalManager.IngredientType.SPICE
 	player = get_tree().get_root().get_node("Node2D/Player")
 	move_and_collide(player_offset)
