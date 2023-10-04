@@ -42,8 +42,8 @@ func take_damage(damage_type: GlobalManager.IngredientType, amount: int):
 	var text = "{amount}"
 	var is_crit = false
 	if GlobalManager.is_super_effective(damage_type, ingredient_type):
-		amount *= 2
-		text = "*{amount}*"
+		amount = 1000
+		text = "*CRIT*"
 		is_crit = true
 	GlobalManager.play_sound_effect(GlobalManager.SoundType.HIT_MONSTER, damage_type, self)
 	if is_crit:

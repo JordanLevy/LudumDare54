@@ -4,6 +4,6 @@ class_name SpiceMonster
 
 func _ready():
 	super._ready()
-	health = 20
+	health = 15
 	speed = 40
 	ingredient_type = GlobalManager.IngredientType.SPICE
