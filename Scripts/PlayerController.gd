@@ -30,7 +30,7 @@ signal ingredients_changed(ingredients : Array[int])
 
 var ingredients: Array[int]
 var monster_rewards: Array[int]
-var projectile_cost: int = 5
+var projectile_cost: int = 1
 
 var dash_timer: Timer
 
@@ -46,8 +46,8 @@ func _ready():
 	dash_timer = get_node("DashTimer")
 	death_timer = get_node("DeathTimer")
 	endlag_timer = get_node("EndlagTimer")
-	ingredients = [20, 20, 20, 5]
-	monster_rewards = [20, 15, 10, 0]
+	ingredients = [2, 2, 2, 2]
+	monster_rewards = [2, 2, 2, 2]
 	GlobalManager.monster_killed.connect(on_monster_killed)
 	emit_signal("ingredients_changed", ingredients)
 
@@ -110,7 +110,7 @@ func turn_sprite(direction):
 func pay_ingredients(ingredient: GlobalManager.IngredientType, cost: int):
 	if is_dead:
 		return
-	spawn_damage_indicator(str(-cost/5.0), global_position, ingredient)
+	spawn_damage_indicator(str(-cost), global_position, ingredient)
 	if GlobalManager.infinite_ingredients:
 		return
 	if ingredients[ingredient] - cost <= 0:
@@ -135,8 +135,8 @@ func gain_ingredients(ingredient: GlobalManager.IngredientType, amount: int):
 	if is_dead or GlobalManager.infinite_ingredients:
 		return
 	var total_ingredients = sum(ingredients)
-	spawn_damage_indicator("+" + str(amount/5.0), global_position, ingredient)
-	if total_ingredients + amount >= 100:
+	spawn_damage_indicator("+" + str(amount), global_position, ingredient)
+	if total_ingredients + amount >= GlobalManager.max_num_scoops:
 		ingredients[ingredient] += amount
 		ingredients_changed.emit(ingredients)
 		GlobalManager.loss_method = GlobalManager.LossMethod.OVERFILL

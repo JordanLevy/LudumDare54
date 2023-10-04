@@ -90,6 +90,10 @@ var weak_matchups = [IngredientType.MEAT, IngredientType.CREAM, IngredientType.S
 
 var infinite_ingredients = false
 
+const ingredients_per_scoop = 10
+const max_num_scoops = 10
+const max_ingredient_capacity = ingredients_per_scoop * max_num_scoops
+
 
 func play_sound_effect(sound_type: SoundType, ingredient: IngredientType, node: Node2D):
 	var sound_player = AudioStreamPlayer2D.new()

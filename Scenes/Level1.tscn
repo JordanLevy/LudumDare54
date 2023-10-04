@@ -1,12 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://60g0forxgg2m"]
+[gd_scene load_steps=9 format=3 uid="uid://60g0forxgg2m"]
 
-[ext_resource type="Script" path="res://Scripts/IngredientsBar.gd" id="1_6i2i2"]
-[ext_resource type="Texture2D" uid="uid://ymkmnhqc73hy" path="res://Assets/IngredientsBar/Under.png" id="2_vkime"]
-[ext_resource type="Texture2D" uid="uid://clpaj0sm6gfli" path="res://Assets/IngredientsBar/Cream.png" id="3_md0s6"]
-[ext_resource type="Texture2D" uid="uid://d4gj0drigpvig" path="res://Assets/IngredientsBar/Spice.png" id="4_rqlib"]
-[ext_resource type="Texture2D" uid="uid://b3wa33333ttyo" path="res://Assets/IngredientsBar/Meat.png" id="5_i3f60"]
-[ext_resource type="Texture2D" uid="uid://b10ly5ir2vidv" path="res://Assets/IngredientsBar/Guac.png" id="6_bs07q"]
-[ext_resource type="Texture2D" uid="uid://bn2u6l6jtfrg3" path="res://Assets/IngredientsBar/Over.png" id="7_qxwf3"]
+[ext_resource type="PackedScene" uid="uid://57peuvssmvoh" path="res://Scenes/IngredientsBar.tscn" id="1_5cwpi"]
 [ext_resource type="TileSet" uid="uid://bfjjiqhq6ixkv" path="res://Assets/TileSet.tres" id="8_b8i68"]
 [ext_resource type="Script" path="res://Scripts/CameraController.gd" id="9_fl85v"]
 [ext_resource type="PackedScene" uid="uid://bvibyd42fxp4l" path="res://Scenes/Player.tscn" id="10_4oidn"]
@@ -26,49 +20,8 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-scale = Vector2(3, 3)
 
-[node name="IngredientsBar" type="Control" parent="CanvasLayer/Control"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("1_6i2i2")
-
-[node name="Under" type="TextureRect" parent="CanvasLayer/Control/IngredientsBar"]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 16.0
-texture = ExtResource("2_vkime")
-
-[node name="CreamBar" type="TextureProgressBar" parent="CanvasLayer/Control/IngredientsBar"]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 16.0
-texture_progress = ExtResource("3_md0s6")
-
-[node name="SpiceBar" type="TextureProgressBar" parent="CanvasLayer/Control/IngredientsBar"]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 16.0
-texture_progress = ExtResource("4_rqlib")
-
-[node name="MeatBar" type="TextureProgressBar" parent="CanvasLayer/Control/IngredientsBar"]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 16.0
-texture_progress = ExtResource("5_i3f60")
-
-[node name="GuacBar" type="TextureProgressBar" parent="CanvasLayer/Control/IngredientsBar"]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 16.0
-texture_progress = ExtResource("6_bs07q")
-
-[node name="Over" type="TextureRect" parent="CanvasLayer/Control/IngredientsBar"]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 16.0
-texture = ExtResource("7_qxwf3")
+[node name="IngredientsBar" parent="CanvasLayer/Control" instance=ExtResource("1_5cwpi")]
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true

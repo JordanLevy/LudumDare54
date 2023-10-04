@@ -48,7 +48,7 @@ func take_damage(damage_type: GlobalManager.IngredientType, amount: int):
 	GlobalManager.play_sound_effect(GlobalManager.SoundType.HIT_MONSTER, damage_type, self)
 	if is_crit:
 		GlobalManager.play_sound_effect(GlobalManager.SoundType.CRIT, damage_type, self)
-	spawn_damage_indicator(text.format({"amount": -amount/5.0}), global_position, damage_type)
+	spawn_damage_indicator(text.format({"amount": -amount}), global_position, damage_type)
 	if is_invincible:
 		return
 	if health - amount <= 0:

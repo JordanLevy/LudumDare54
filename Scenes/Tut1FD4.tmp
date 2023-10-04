@@ -105,6 +105,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(3, 3)
 
 [node name="IngredientsBar" parent="CanvasLayer/Control" instance=ExtResource("1_k0ily")]
 
