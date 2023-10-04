@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://drnmc3d3oe2uo"]
+[gd_scene load_steps=10 format=3 uid="uid://drnmc3d3oe2uo"]
 
 [ext_resource type="Script" path="res://Scripts/SpiceMonster.gd" id="1_jbhw8"]
 [ext_resource type="Texture2D" uid="uid://brercf5nsdrf" path="res://Assets/Monsters/SpiceMonster.png" id="2_c58aj"]
@@ -31,6 +31,41 @@ radius = 14.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_bijnw"]
 radius = 24.0
 
+[sub_resource type="Animation" id="Animation_ack2r"]
+resource_name = "death"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"despawn"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f0uuj"]
+_data = {
+"death": SubResource("Animation_ack2r")
+}
+
 [node name="SpiceMonster" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 256
@@ -58,5 +93,10 @@ shape = SubResource("CircleShape2D_bijnw")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_postprocessing = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f0uuj")
+}
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

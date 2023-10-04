@@ -19,11 +19,13 @@ var is_aggro: bool = false
 var sight_range = 250
 @export var can_move: bool = true
 @export var is_invincible: bool = false
+var animation_player: AnimationPlayer
 
 func _ready():
 	player = get_tree().get_root().get_node("Node2D/Player")
 	nav = get_node("NavigationAgent2D")
 	sprite = get_node("Sprite")
+	animation_player = get_node("AnimationPlayer")
 
 func spawn_effect(effect: PackedScene, pos: Vector2):
 	var instance = effect.instantiate()
@@ -50,7 +52,7 @@ func take_damage(damage_type: GlobalManager.IngredientType, amount: int):
 	if is_invincible:
 		return
 	if health - amount <= 0:
-		despawn()
+		die()
 	health -= amount
 	
 func take_knockback(direction: Vector2, amount: float):
@@ -59,6 +61,9 @@ func take_knockback(direction: Vector2, amount: float):
 func despawn():
 	GlobalManager.monster_killed.emit(ingredient_type)
 	queue_free()
+	
+func die():
+	animation_player.play("death")
 	
 func _on_hurtbox_body_entered(body):
 	if body is Projectile:
