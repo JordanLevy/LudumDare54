@@ -24,9 +24,8 @@ func update(ingredients):
 	var total: float = 0;
 	for i in range(0, GlobalManager.IngredientType.GUAC + 1):
 		var percentage = ingredients[i] * GlobalManager.ingredients_per_scoop
-		percentage *= 100.0
+		percentage *= GlobalManager.max_ingredient_capacity
 		percentage /= float(GlobalManager.max_ingredient_capacity)
-		
 		print(ingredients[i],' ', percentage)
 		bars[i].value = percentage
 		bars[i].position.x = total
