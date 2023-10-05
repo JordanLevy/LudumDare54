@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdtw3e3xo4kdd"]
+[gd_scene load_steps=10 format=3 uid="uid://cdtw3e3xo4kdd"]
 
 [ext_resource type="Script" path="res://Scripts/GuacProjectile.gd" id="1_1x75n"]
 [ext_resource type="Texture2D" uid="uid://bw834etfaow4u" path="res://Assets/Projectiles/GuacProjectile.png" id="2_nl8ds"]
@@ -36,6 +36,28 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_mhh8x"]
 radius = 8.0
 
+[sub_resource type="Animation" id="Animation_lih8k"]
+resource_name = "death"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h3ua6"]
+_data = {
+"death": SubResource("Animation_lih8k")
+}
+
 [node name="GuacProjectile" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 32
@@ -56,3 +78,8 @@ sprite_frames = SubResource("SpriteFrames_qoxfa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mhh8x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h3ua6")
+}
