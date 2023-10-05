@@ -89,7 +89,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgaox"]
-size = Vector2(31.3034, 1.79759)
+size = Vector2(47.4156, 19.2248)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qkcr3"]
 radius = 28.6291
@@ -110,7 +110,7 @@ centered = false
 offset = Vector2(-14, -50)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-17, 18)
+position = Vector2(-12.6574, 10.4232)
 rotation = 0.453786
 shape = SubResource("RectangleShape2D_sgaox")
 

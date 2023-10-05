@@ -29,7 +29,7 @@ animations = [{
 radius = 9.05539
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bijnw"]
-radius = 24.0
+radius = 19.105
 
 [sub_resource type="Animation" id="Animation_ack2r"]
 resource_name = "death"
@@ -81,7 +81,7 @@ frame = 1
 offset = Vector2(0, -36)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(0, -11)
 shape = SubResource("CircleShape2D_biwke")
 
 [node name="Hurtbox" type="Area2D" parent="."]
@@ -89,7 +89,7 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, -15)
+position = Vector2(2, -17)
 shape = SubResource("CircleShape2D_bijnw")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

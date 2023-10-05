@@ -94,7 +94,7 @@ sources/0 = SubResource("TileSetScenesCollectionSource_nimmk")
 [sub_resource type="LabelSettings" id="LabelSettings_k3ri2"]
 font_color = Color(0, 0, 0, 1)
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 y_sort_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
