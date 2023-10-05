@@ -3,10 +3,10 @@ extends CharacterBody2D
 class_name Monster
 
 var player: Player
-var health = 30
+var health = 3
 var speed = 30
 var accel = 4
-var damage = 10
+var damage = 1
 var ingredient_type = GlobalManager.IngredientType.PLAIN
 var nav: NavigationAgent2D
 var sprite: AnimatedSprite2D
