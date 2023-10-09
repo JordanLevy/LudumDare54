@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvibyd42fxp4l"]
+[gd_scene load_steps=9 format=3 uid="uid://bvibyd42fxp4l"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_fr1ph"]
 [ext_resource type="Texture2D" uid="uid://c4c1swc8nehsg" path="res://Assets/Burrito.png" id="2_w0fu8"]
+[ext_resource type="Texture2D" uid="uid://bpsw8dy55gl2a" path="res://Assets/Arrow.png" id="3_3p47i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ofwbw"]
 radius = 12.0
@@ -67,6 +68,15 @@ one_shot = true
 
 [node name="EndlagTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AimArrowPivot" type="Node2D" parent="."]
+position = Vector2(0, -30)
+
+[node name="AimArrow" type="Sprite2D" parent="AimArrowPivot"]
+z_index = 100
+z_as_relative = false
+position = Vector2(40, 0)
+texture = ExtResource("3_3p47i")
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

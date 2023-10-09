@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0odlgal36o2k"]
+[gd_scene load_steps=5 format=3 uid="uid://d0odlgal36o2k"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_13ndn"]
 [ext_resource type="Texture2D" uid="uid://bqka8aa6uiqtf" path="res://Assets/Background.png" id="2_uols0"]
+[ext_resource type="Script" path="res://Scripts/FocusButton.gd" id="3_htjye"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vb1cf"]
 font_size = 80
@@ -31,6 +32,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(104, 16)
 layout_mode = 2
 text = "Play"
+script = ExtResource("3_htjye")
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(104, 16)

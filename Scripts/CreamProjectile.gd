@@ -6,23 +6,22 @@ var area: Area2D
 var player: Player
 
 func _ready():
-	player_offset = Vector2(0, -20)
 	knockback = 7
 	speed = 1
 	endlag = 1.2
 	ingredient_type = GlobalManager.IngredientType.CREAM
 	player = get_tree().get_root().get_node("Node2D/Player")
-	position = player.position + player_offset
-	rotation = atan2(player.mouse_position.y - position.y, player.mouse_position.x - position.x)
-	velocity = Vector2(cos(rotation), sin(rotation)).normalized() * speed
+	position = player.position - player.shoot_offset
+	rotation = atan2(player.aim_target.y, player.aim_target.x)
+	velocity = player.aim_target * speed
 	
 	
 func on_hit():
 	pass
 	
 func _physics_process(delta):
-	position = player.position + player_offset
-	rotation = atan2(player.mouse_position.y - position.y, player.mouse_position.x - position.x)
+	position = player.position - player.shoot_offset
+	rotation = atan2(player.aim_target.y, player.aim_target.x)
 	super._physics_process(delta)
 
 

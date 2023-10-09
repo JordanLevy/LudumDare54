@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 class_name Projectile
 
-var player_offset = Vector2.ZERO
 var damage = 1
 var knockback = 2
 var speed = 2

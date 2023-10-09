@@ -24,7 +24,12 @@ var input = Vector2.ZERO
 var fire_cream = false
 var fire_spice = false
 var fire_meat = false
+
 var mouse_position = Vector2.ZERO
+var mouse_aim = Vector2.ZERO
+var controller_aim = Vector2.ZERO
+var aim_target = Vector2.ZERO
+var shoot_offset = Vector2(0, 30)
 
 signal ingredients_changed(ingredients : Array[int])
 
@@ -41,11 +46,15 @@ var endlag_timer: Timer
 
 var knockback_coefficient = 10
 
+var aim_arrow_pivot: Node2D
+var is_using_mouse_aim = true
+
 func _ready():
 	sprite = get_node("Sprite")
 	dash_timer = get_node("DashTimer")
 	death_timer = get_node("DeathTimer")
 	endlag_timer = get_node("EndlagTimer")
+	aim_arrow_pivot = get_node("AimArrowPivot")
 	ingredients = [2, 2, 2, 2]
 	monster_rewards = [2, 2, 2, 2]
 	GlobalManager.monster_killed.connect(on_monster_killed)
@@ -60,6 +69,19 @@ func get_input():
 	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input.y = (Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up"));
 	mouse_position = get_global_mouse_position()
+	mouse_aim = (mouse_position + shoot_offset - global_position).normalized()
+	var controller_x = Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left")
+	var controller_y = Input.get_action_strength("aim_up") - Input.get_action_strength("aim_down")
+	controller_aim = Vector2(controller_x, -controller_y).normalized()
+	
+	if controller_aim.length() > 0:
+		is_using_mouse_aim = false
+		
+	if is_using_mouse_aim:
+		aim_target = mouse_aim
+	elif controller_aim.length() > 0:
+			aim_target = controller_aim
+		
 	if input.length() > 0:
 		input = input.normalized()
 	else:
@@ -67,6 +89,7 @@ func get_input():
 	fire_cream = Input.is_action_pressed("fire_cream")
 	fire_spice = Input.is_action_pressed("fire_spice")
 	fire_meat = Input.is_action_pressed("fire_meat")
+	aim_arrow_pivot.rotation = atan2(aim_target.y, aim_target.x)
 	
 
 func player_movement(delta):
@@ -150,7 +173,7 @@ func gain_ingredients(ingredient: GlobalManager.IngredientType, amount: int):
 func shoot(ingredient: GlobalManager.IngredientType):
 	GlobalManager.play_sound_effect(GlobalManager.SoundType.SHOOT, ingredient, self)
 	var instance = projectile_prefabs[ingredient].instantiate()
-	instance.target = mouse_position
+	instance.target = aim_target
 	instance.global_position = global_position
 	get_parent().add_child(instance)
 	endlag_timer.wait_time = instance.endlag
@@ -158,10 +181,7 @@ func shoot(ingredient: GlobalManager.IngredientType):
 	
 func start_dash():
 	dash_timer.start()
-	if velocity.length() > 0.01:
-		dash_velocity = velocity.normalized() * dash_speed
-	else:
-		dash_velocity = (mouse_position - global_position).normalized() * dash_speed
+	dash_velocity = aim_target * dash_speed
 
 func spawn_effect(effect: PackedScene, pos: Vector2):
 	var instance = effect.instantiate()
@@ -203,3 +223,9 @@ func on_monster_killed(type: GlobalManager.IngredientType):
 
 func _on_dash_timer_timeout():
 	velocity = Vector2.ZERO
+	
+func _input(event):
+	if event is InputEventMouseMotion:
+		var mouse_motion = event.relative
+		if mouse_motion.length() > 0:
+			is_using_mouse_aim = true

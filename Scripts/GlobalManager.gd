@@ -76,7 +76,6 @@ signal game_state_changed
 signal monster_killed
 signal toggle_mute_music
 
-
 var is_menu_enabled = true
 var nacho_count : Array[int] = [0, 0, 0, 0, 0]
 var game_state : GameState = GameState.MENU
