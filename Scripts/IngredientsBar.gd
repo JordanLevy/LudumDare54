@@ -3,7 +3,7 @@ extends Control
 var bars : Array[TextureProgressBar]
 var player: Node2D
 @export var is_door_label = false
-@export var door_label_ingredients = [1, 1, 1, 1]
+@export var door_label_ingredients = [10, 10, 10, 10]
 
 func _ready():
 	player = get_tree().get_root().get_node("Node2D/Player")

@@ -8,7 +8,7 @@ var player: Player
 func _ready():
 	knockback = 7
 	speed = 1
-	endlag = 1.2
+	endlag = 0.8
 	ingredient_type = GlobalManager.IngredientType.CREAM
 	player = get_tree().get_root().get_node("Node2D/Player")
 	position = player.position - player.shoot_offset

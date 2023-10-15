@@ -35,7 +35,6 @@ signal ingredients_changed(ingredients : Array[int])
 
 var ingredients: Array[int]
 var monster_rewards: Array[int]
-var projectile_cost: int = 1
 
 var dash_timer: Timer
 
@@ -55,8 +54,8 @@ func _ready():
 	death_timer = get_node("DeathTimer")
 	endlag_timer = get_node("EndlagTimer")
 	aim_arrow_pivot = get_node("AimArrowPivot")
-	ingredients = [2, 2, 2, 2]
-	monster_rewards = [2, 2, 2, 2]
+	ingredients = [20, 20, 20, 20]
+	monster_rewards = [20, 20, 20, 20]
 	GlobalManager.monster_killed.connect(on_monster_killed)
 	emit_signal("ingredients_changed", ingredients)
 
@@ -108,13 +107,13 @@ func player_movement(delta):
 	
 	if endlag_timer.is_stopped():
 		if fire_cream:
-			pay_ingredients(GlobalManager.IngredientType.CREAM, projectile_cost)
+			pay_ingredients(GlobalManager.IngredientType.CREAM, CreamProjectile.cost)
 			shoot(GlobalManager.IngredientType.CREAM)
 		elif fire_spice:
-			pay_ingredients(GlobalManager.IngredientType.SPICE, projectile_cost)
+			pay_ingredients(GlobalManager.IngredientType.SPICE, SpiceProjectile.cost)
 			shoot(GlobalManager.IngredientType.SPICE)
 		elif fire_meat:
-			pay_ingredients(GlobalManager.IngredientType.MEAT, projectile_cost)
+			pay_ingredients(GlobalManager.IngredientType.MEAT, MeatProjectile.cost)
 			shoot(GlobalManager.IngredientType.MEAT)
 			start_dash()
 		

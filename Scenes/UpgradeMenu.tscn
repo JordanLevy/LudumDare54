@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgp1t2py8fxlw"]
+
+[ext_resource type="Script" path="res://Scripts/NextWaveButton.gd" id="1_p4b55"]
+
+[node name="UpgradeMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 530.0
+offset_top = 306.5
+offset_right = 622.0
+offset_bottom = 346.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Upgrade1" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Upgrade1"
+
+[node name="Upgrade2" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Upgrade1"
+
+[node name="Upgrade3" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Upgrade1"
+
+[node name="NextWave" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Next Wave"
+script = ExtResource("1_p4b55")
+
+[connection signal="pressed" from="VBoxContainer/NextWave" to="VBoxContainer/NextWave" method="_on_pressed"]

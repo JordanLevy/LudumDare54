@@ -7,7 +7,7 @@ var player: Player
 func _ready():
 	knockback = -5
 	speed = 40
-	endlag = 0.5
+	endlag = 0.8
 	ingredient_type = GlobalManager.IngredientType.MEAT
 	player = get_tree().get_root().get_node("Node2D/Player")
 	velocity = player.velocity.normalized()

@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/CameraController.gd" id="3_2jtqy"]
 [ext_resource type="PackedScene" uid="uid://bvibyd42fxp4l" path="res://Scenes/Player.tscn" id="4_xw4qc"]
 [ext_resource type="Script" path="res://Scripts/WaveManager.gd" id="5_kgewr"]
-[ext_resource type="PackedScene" uid="uid://o05lff2sb8dv" path="res://Scenes/FinishLine.tscn" id="6_tynvh"]
+[ext_resource type="PackedScene" uid="uid://dgp1t2py8fxlw" path="res://Scenes/UpgradeMenu.tscn" id="7_1i56t"]
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -15,11 +15,17 @@ layer = 10
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="IngredientsBar" parent="CanvasLayer/Control" instance=ExtResource("1_ecmig")]
+y_sort_enabled = false
+
+[node name="UpgradeMenu" parent="CanvasLayer/Control" instance=ExtResource("7_1i56t")]
+layout_mode = 1
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -47,6 +53,3 @@ collision_mask = 29
 
 [node name="WaveManager" type="Node2D" parent="."]
 script = ExtResource("5_kgewr")
-
-[node name="FinishLine" parent="." instance=ExtResource("6_tynvh")]
-position = Vector2(1, 136)
