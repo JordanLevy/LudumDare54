@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0odlgal36o2k"]
+[gd_scene load_steps=4 format=3 uid="uid://d0odlgal36o2k"]
 
-[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_13ndn"]
+[ext_resource type="Script" path="res://Scripts/MenuButton.gd" id="2_ppvd8"]
 [ext_resource type="Texture2D" uid="uid://bqka8aa6uiqtf" path="res://Assets/Background.png" id="2_uols0"]
-[ext_resource type="Script" path="res://Scripts/FocusButton.gd" id="3_htjye"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vb1cf"]
 font_size = 80
@@ -13,7 +12,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_13ndn")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
@@ -28,17 +26,37 @@ text = "Burrito"
 label_settings = SubResource("LabelSettings_vb1cf")
 horizontal_alignment = 1
 
-[node name="PlayButton" type="Button" parent="VBoxContainer"]
+[node name="Tutorial" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(104, 16)
 layout_mode = 2
-text = "Play"
-script = ExtResource("3_htjye")
+text = "Tutorial"
+script = ExtResource("2_ppvd8")
+init_focused = true
+target_game_state = 1
+
+[node name="Puzzle" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(104, 16)
+layout_mode = 2
+text = "Puzzle Mode"
+script = ExtResource("2_ppvd8")
+target_game_state = 2
+
+[node name="Survival" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(104, 16)
+layout_mode = 2
+text = "Survival Mode"
+script = ExtResource("2_ppvd8")
+target_game_state = 3
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(104, 16)
 layout_mode = 2
 text = "Settings
 "
+script = ExtResource("2_ppvd8")
+target_game_state = 6
 
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Tutorial" to="VBoxContainer/Tutorial" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/Puzzle" to="VBoxContainer/Puzzle" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/Survival" to="VBoxContainer/Survival" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="VBoxContainer/SettingsButton" method="_on_pressed"]

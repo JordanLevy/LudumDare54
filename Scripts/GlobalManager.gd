@@ -11,10 +11,11 @@ enum IngredientType {
 enum GameState {
 	MENU = 0,
 	TUTORIAL = 1,
-	LEVEL1 = 2,
-	WIN = 3,
-	LOSE = 4,
-	SETTINGS = 5
+	PUZZLE = 2,
+	SURVIVAL = 3,
+	WIN = 4,
+	LOSE = 5,
+	SETTINGS = 6
 }
 
 enum LossMethod {
@@ -138,9 +139,16 @@ func set_game_state(state: GameState):
 		loss_ingredient = IngredientType.PLAIN
 		infinite_ingredients = true
 		get_tree().change_scene_to_file(checkpoint)
-	elif state == GameState.LEVEL1:
+	elif state == GameState.PUZZLE:
 		nacho_count = [0, 0, 0, 0, 0]
-		checkpoint = "res://Scenes/Level1.tscn"
+		checkpoint = "res://Scenes/Puzzle.tscn"
+		loss_method = LossMethod.NONE
+		loss_ingredient = IngredientType.PLAIN
+		infinite_ingredients = false
+		get_tree().change_scene_to_file(checkpoint)
+	elif state == GameState.SURVIVAL:
+		nacho_count = [0, 0, 0, 0, 0]
+		checkpoint = "res://Scenes/Survival.tscn"
 		loss_method = LossMethod.NONE
 		loss_ingredient = IngredientType.PLAIN
 		infinite_ingredients = false

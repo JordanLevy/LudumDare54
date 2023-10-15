@@ -11,12 +11,3 @@ func _ready():
 		label.text = underfill_phrases[randi() % underfill_phrases.size()].format({"i": GlobalManager.get_ingredient_name(GlobalManager.loss_ingredient)})
 	elif GlobalManager.loss_method == GlobalManager.LossMethod.OVERFILL:
 			label.text = overfill_phrases[randi() % overfill_phrases.size()].format({"i": GlobalManager.get_ingredient_name(GlobalManager.loss_ingredient)})
-
-
-	
-
-func _on_menu_button_pressed():
-	if GlobalManager.is_menu_enabled:
-		GlobalManager.set_game_state(GlobalManager.GameState.MENU)
-	else:
-		GlobalManager.set_game_state(GlobalManager.GameState.LEVEL1)

@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctflo8xcqfe8v"]
+[gd_scene load_steps=4 format=3 uid="uid://ctflo8xcqfe8v"]
 
-[ext_resource type="Script" path="res://Scripts/WinScreen.gd" id="1_ksncn"]
 [ext_resource type="Texture2D" uid="uid://bqka8aa6uiqtf" path="res://Assets/Background.png" id="2_f0igm"]
-[ext_resource type="Script" path="res://Scripts/FocusButton.gd" id="3_q0m14"]
+[ext_resource type="Script" path="res://Scripts/MenuButton.gd" id="3_q0m14"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wrqhl"]
 font_size = 80
@@ -13,7 +12,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ksncn")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
@@ -33,5 +31,6 @@ custom_minimum_size = Vector2(104, 16)
 layout_mode = 2
 text = "Return to Main Menu"
 script = ExtResource("3_q0m14")
+init_focused = true
 
-[connection signal="pressed" from="VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MenuButton" to="VBoxContainer/MenuButton" method="_on_pressed"]
