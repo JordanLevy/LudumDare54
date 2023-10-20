@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgp1t2py8fxlw"]
+[gd_scene load_steps=3 format=3 uid="uid://dgp1t2py8fxlw"]
 
+[ext_resource type="Script" path="res://Scripts/UpgradeMenu.gd" id="1_jkv6p"]
 [ext_resource type="Script" path="res://Scripts/NextWaveButton.gd" id="1_p4b55"]
 
 [node name="UpgradeMenu" type="Control"]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jkv6p")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -23,6 +25,10 @@ grow_vertical = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
+[node name="Upgrade0" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Upgrade1"
+
 [node name="Upgrade1" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Upgrade1"
@@ -31,13 +37,12 @@ text = "Upgrade1"
 layout_mode = 2
 text = "Upgrade1"
 
-[node name="Upgrade3" type="Button" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Upgrade1"
-
 [node name="NextWave" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Next Wave"
 script = ExtResource("1_p4b55")
 
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Upgrade0" to="." method="on_upgrade_pressed" binds= [0]]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Upgrade1" to="." method="on_upgrade_pressed" binds= [1]]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Upgrade2" to="." method="on_upgrade_pressed" binds= [2]]
 [connection signal="pressed" from="VBoxContainer/NextWave" to="VBoxContainer/NextWave" method="_on_pressed"]

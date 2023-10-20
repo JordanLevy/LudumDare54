@@ -21,7 +21,7 @@ func _ready():
 	
 func begin_upgrade():
 	get_tree().paused = true
-	upgrade_menu.show()
+	upgrade_menu.begin_upgrade()
 	
 func end_upgrade():
 	upgrade_menu.hide()
